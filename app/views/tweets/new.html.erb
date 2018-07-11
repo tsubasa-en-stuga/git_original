@@ -1,17 +1,19 @@
 <div class="contents row">
+  <div class="container">
+        
+    <%= form_tag('/tweets', method: :post) do %>
+      
+      <h3>
+        あたらしい 絵にっきを かく
+      </h3>
+      
+      <input type="text" name="image" placeholder="あたらしく　かいた　絵(のURL)" autofocus="true">
+      
+      <textarea name="text" placeholder="かんそう" rows="10" cols="30"></textarea>
+      
+      <input type="submit" value="お友だちにみせよう">
     
-  <%= form_tag('/tweets', method: :post) do %>
+    <% end %>
     
-    <h3>
-      あたらしい　絵にっき
-    </h3>
-    
-    <input type="text" name="image" placeholder="あたらしく　かいた　絵(のURL)" autofocus="true">
-    
-    <textarea name="text" placeholder="かんそう" rows="10" cols="30"></textarea>
-    
-    <input type="submit" value="お友だちにみせよう">
-  
-  <% end %>
-
+  </div>
 </div>
