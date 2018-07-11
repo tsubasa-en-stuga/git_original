@@ -35,7 +35,7 @@
            <span><%= current_user.nickname %>
             <ul class="user__info">
               <li>
-                <a href="/users/<%= current_user.id %>">マイページ</a>
+                <a href="/users/<%= current_user.id %>">ぼくの 絵にっき</a>
           
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
               
@@ -43,7 +43,7 @@
             </ul>
           </span>
           
-          <a class="post" href="/tweets/new">あたらしい 絵にっきを かこう</a>
+          <a class="post" href="/tweets/new">あたらしい 絵にっきを かく</a>
         </div>
       <% else %>
         <div class="grid-6">
