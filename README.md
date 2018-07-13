@@ -29,20 +29,20 @@ has_many :comments
 
 ```
 belongs_to :user
-has_many :comments     
+has_many :comments
 ```
 
 ### phrasesテーブル
 
 |カラム|データ型|NOT NULL制約|一意性制約|外部キー制約|INDEX|
 |:--:|:--:|:--:|:--:|:--:|:--:|
-|text|text|●|●|-|●|
-|phrases_type|integer|●|-|-|-|
+|text|text|●|-|-|-|
+|phrase_type|integer|●|-|-|-|
 |tweet_id|references|●|-|●|●|
 
 ```
 has_many :tweets
-enum phrases_type: [:subject, :verb, :object, impression]
+enum phrases_type: [:subject, :verb, :object, :impression]
 ```
 
 ### commentsテーブル
