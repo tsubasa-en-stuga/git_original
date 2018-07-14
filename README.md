@@ -29,6 +29,8 @@ has_many :comments
 
 ```
 belongs_to :user
+has_many :phrases, through: :tweet_phrases
+has_many :tweet_phrases
 has_many :comments
 ```
 
@@ -38,11 +40,23 @@ has_many :comments
 |:--:|:--:|:--:|:--:|:--:|:--:|
 |text|text|●|-|-|-|
 |phrase_type|integer|●|-|-|-|
-|tweet_id|references|●|-|●|●|
+
+```
+belongs_to :tweets, through: :tweet_phrases
+has_many :tweet_phrases
+enum phrases_type: [:subject, :verb, :object, :impression]
+```
+
+### tweet_phraseテーブル
+
+|カラム|データ型|NOT NULL制約|一意性制約|外部キー制約|INDEX|
+|:--:|:--:|:--:|:--:|:--:|:--:|
+|tweet_id|references|●|-|-|-|
+|phrase_id|references|●|●|-|
 
 ```
 has_many :tweets
-enum phrases_type: [:subject, :verb, :object, :impression]
+h
 ```
 
 ### commentsテーブル
