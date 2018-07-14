@@ -7,10 +7,16 @@ class TweetsController < ApplicationController
   end
 
   def new
+    @tweet = Tweet.new
+    @phrases = Phrase.all
   end
 
   def create
-    Tweet.create(image: tweet_params[:image], text: tweet_params[:text], user_id: current_user.id)
+    tweet = current_user.tweets.create(image: tweet_params[:image])
+    tweet.tweet_phrases.create(phrase_id: tweet_params[:tweet_phrase][:subject_id])
+    tweet.tweet_phrases.create(phrase_id: tweet_params[:tweet_phrase][:object_id])
+    tweet.tweet_phrases.create(phrase_id: tweet_params[:tweet_phrase][:verb_id])
+    tweet.tweet_phrases.create(phrase_id: tweet_params[:tweet_phrase][:impression_id])
   end
 
   def destroy
@@ -38,7 +44,7 @@ class TweetsController < ApplicationController
 
   private
   def tweet_params
-    params.permit(:image, :text)
+     params.require(:tweet).permit(:image, tweet_phrase: [:subject_id, :object_id, :verb_id, :impression_id])
   end
 
   def move_to_index

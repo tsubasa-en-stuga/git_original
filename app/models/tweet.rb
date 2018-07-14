@@ -4,5 +4,5 @@ class Tweet < ActiveRecord::Base
   has_many :tweet_phrases
   has_many :comments           #commentsテーブルとのアソシエーション
 
-  accepts_nested_attributes_for :tweet_phrases
+  accepts_nested_attributes_for :phrases
 end

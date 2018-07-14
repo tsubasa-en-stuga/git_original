@@ -1,19 +1,26 @@
 <div class="contents row">
   <div class="container">
-        
-    <%= form_tag('/tweets', method: :post) do %>
-      
+    <%= form_for(@tweet) do |f|%>
       <h3>
         あたらしい 絵にっきを かく
       </h3>
+      <%= f.text_field :image, placeholder: "あたらしく　かいた　絵(のURL)", autofocus: "true" %>
       
-      <input type="text" name="image" placeholder="あたらしく　かいた　絵(のURL)" autofocus="true">
-      
-      <textarea name="text" placeholder="かんそう" rows="10" cols="30"></textarea>
-      
-      <input type="submit" value="お友だちにみせよう">
-    
+      <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
+        <%= tweet_phrase.select :subject_id , @phrases.subject.map{|p| [p.text, p.id]}, value: "subject" %>
+      <% end %>
+      <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
+        <%= tweet_phrase.select :object_id , @phrases.object.map{|p| [p.text, p.id]}, value: "object" %>
+      <% end %>
+      <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
+        <%= tweet_phrase.select :verb_id , @phrases.verb.map{|p| [p.text, p.id]}, value: "verb" %>
+      <% end %>
+      <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
+        <%= tweet_phrase.select :impression_id , @phrases.impression.map{|p| [p.text, p.id]}, value: "impression" %>
+      <% end %>
+
+
+      <%= f.submit value: "お友だちにみせよう" %>
     <% end %>
-    
   </div>
 </div>
