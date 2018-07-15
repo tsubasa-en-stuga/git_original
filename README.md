@@ -42,9 +42,9 @@ has_many :comments
 |phrase_type|integer|●|-|-|-|
 
 ```
-belongs_to :tweets, through: :tweet_phrases
-has_many :tweet_phrases
-enum phrases_type: [:subject, :verb, :object, :impression]
+  has_many :tweets, through: :tweet_phrases
+  has_many :tweet_phrase
+  enum phrase_type: [:subject, :object, :verb, :impression]
 ```
 
 ### tweet_phraseテーブル
@@ -55,8 +55,8 @@ enum phrases_type: [:subject, :verb, :object, :impression]
 |phrase_id|references|●|●|-|
 
 ```
-has_many :tweets
-h
+belongs_to :tweet
+belongs_to :phrase
 ```
 
 ### commentsテーブル
