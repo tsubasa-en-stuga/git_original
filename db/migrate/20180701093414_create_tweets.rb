@@ -4,6 +4,7 @@ class CreateTweets < ActiveRecord::Migration
       t.string      :name
       t.text        :text
       t.text        :image
+      t.references  :user
       t.timestamps
     end
   end
