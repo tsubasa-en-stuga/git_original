@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'pictures/new'
+
   get 'parents/show'
 
   devise_for :users
@@ -7,5 +9,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
   resources :users, only: [:show]
-  resources :parents,only: [:show]
+  resources :parents, only: [:show]
+
 end
