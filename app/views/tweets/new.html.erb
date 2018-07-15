@@ -4,22 +4,34 @@
       <h3>
         あたらしい 絵にっきを かく
       </h3>
+
       <%= f.text_field :image, placeholder: "あたらしく　かいた　絵(のURL)", autofocus: "true" %>
-      
-      <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
-        <%= tweet_phrase.select :subject_id , @phrases.subject.map{|p| [p.text, p.id]}, value: "subject" %>
-      <% end %>
-      <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
-        <%= tweet_phrase.select :object_id , @phrases.object.map{|p| [p.text, p.id]}, value: "object" %>
-      <% end %>
-      <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
-        <%= tweet_phrase.select :verb_id , @phrases.verb.map{|p| [p.text, p.id]}, value: "verb" %>
-      <% end %>
-      <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
-        <%= tweet_phrase.select :impression_id , @phrases.impression.map{|p| [p.text, p.id]}, value: "impression" %>
-      <% end %>
+      <div class="phrase_forms">
+        <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
+          <%= f.label "誰が", id: "tweet_tweet_phrase_subject_id", class: "selected"%>
+          <div class: "phrase_form_items selected">
+            <%= tweet_phrase.select :subject_id , @phrases.subject.map{|p| [p.text, p.id]} %>
+          </div>
+        <% end %>
 
+        <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
+          <%= f.label "何を", id: "tweet_tweet_phrase_object_id"%>
+          <div class: "phrase_form_items">
+            <%= tweet_phrase.select :subject_id , @phrases.object.map{|p| [p.text, p.id]} %>
+          </div>
+        <% end %>
 
+        <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
+          <%= f.label "どうした？", class: "verb"%>
+          <%= tweet_phrase.select :verb_id , @phrases.verb.map{|p| [p.text, p.id]} %>
+        <% end %>
+
+        <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
+          <%= f.label "どうだった？", class: "impression"%>
+          <%= tweet_phrase.select :impression_id , @phrases.impression.map{|p| [p.text, p.id]} %>
+        <% end %>
+
+      </div>
       <%= f.submit value: "お友だちにみせよう" %>
     <% end %>
   </div>
