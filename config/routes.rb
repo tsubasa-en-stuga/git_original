@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show]
   resources :parents, only: [:show]
-  resources "parents", :path => 'parents/:id'
+  resources "parents", path:'parents/:id'
   resources :parents, only: [:create]
 
 end
