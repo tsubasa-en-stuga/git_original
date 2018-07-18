@@ -1,5 +1,6 @@
 class Tweet < ActiveRecord::Base
   belongs_to :user
+  belongs_to :images
   has_many :phrases, through: :tweet_phrases
   has_many :tweet_phrases
   has_many :comments           #commentsテーブルとのアソシエーション

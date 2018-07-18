@@ -1,18 +1,14 @@
 class ParentsController < ApplicationController
   def show
-
   end
 
-  def index
-
-  end
-
-  def new
-    @images = Imege.new
+  def create
+    Image.create(image: "")
   end
   
-  def user_params
-    params.requier(:user).permit(:name, :image)
+  private
+  def image_params
+    params.requier(:id).permit(:image)
   end
   
 end

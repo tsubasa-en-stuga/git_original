@@ -10,20 +10,11 @@
 
 <div class="contents row">
   <div class="success">
-      <%= form_tag('/parents:id', method: :post) do %>
-        <h3>
-          画像アップロード
-        </h3>
-        <input type="text" name="name" placeholder="画像の名前">
-          
-          <p class="btn_upload">
-            画像ファイルを選択してアップロード
-          </p>
-            
-            <input type="file" name="image" placeholder="Image Url">
     
-        <textarea name="text" placeholder="いつの写真" rows="1" cols="10"></textarea>
-        <input type="submit" value="アップロード">
+      <%= form_for :image do |f| %>
+            <%= f.file_field :image %>
+            <%= f.submit %>
       <% end %>
-    </div>
+
+  </div>
 </div>

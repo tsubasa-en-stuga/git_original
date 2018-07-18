@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
   resources :users, only: [:show]
-  resources :parents
+  resources :parents, only: [:show]
+  resources "parents", :path => 'parents/:id'
+  resources :parents, only: [:create]
 
 end
