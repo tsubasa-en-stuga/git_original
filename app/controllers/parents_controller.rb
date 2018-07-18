@@ -3,8 +3,7 @@ class ParentsController < ApplicationController
   end
 
   def create
-    binding.pry
-    Image.create(image_params)
+    image = current_user.images.create(image_params)
   end
   
   private
