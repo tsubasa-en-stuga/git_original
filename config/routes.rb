@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'pictures/new'
-
-  get 'parents/show'
 
   devise_for :users
   root 'tweets#index'
