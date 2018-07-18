@@ -4,6 +4,4 @@ class Phrase < ActiveRecord::Base
 
   accepts_nested_attributes_for :tweets
   enum phrase_type: [:subject, :object, :verb, :impression]
-
-  Phrase_types_count = Phrase.phrase_types.count
 end

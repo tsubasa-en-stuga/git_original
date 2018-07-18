@@ -16,45 +16,14 @@
 
       <div class="tweet_items">
         <div class="phrase_items">
-          <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
-            <% @phrases.subject.each do |item| %>
-              <%= tweet_phrase.label "phrase_id_value#{item.id}" do %>
-                <%= tweet_phrase.radio_button :phrase_id, value: item.id%>
-                <%= item.text %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-
-        <div class="phrase_items">
-          <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
-            <% @phrases.object.each do |item| %>
-              <%= tweet_phrase.label "phrase_id_value#{item.id}" do %>
-                <%= tweet_phrase.radio_button :phrase_id, value: item.id%>
-                <%= item.text %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-
-        <div class="phrase_items">
-          <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
-            <% @phrases.verb.each do |item| %>
-              <%= tweet_phrase.label "phrase_id_value#{item.id}" do %>
-                <%= tweet_phrase.radio_button :phrase_id, value: item.id%>
-                <%= item.text %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-
-        <div class="phrase_items">
-          <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
-            <% @phrases.impression.each do |item| %>
-              <%= tweet_phrase.label "phrase_id_value#{item.id}" do %>
-                <%= tweet_phrase.radio_button :phrase_id, value: item.id%>
-                <%= item.text %>
-              <% end %>
+          <%= f.fields_for :tweet_phrases do |tweet_phrase| %>
+            <% @phrases.each do |item| %>
+              <div id= <%= item.phrase_type %> >
+                <%= tweet_phrase.label "phrase_id_#{item.id}" do %>
+                  <%= tweet_phrase.radio_button :phrase_id, item.id%>
+                  <%= item.text %>
+                <% end %>
+              </div>
             <% end %>
           <% end %>
         </div>

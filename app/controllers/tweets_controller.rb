@@ -8,12 +8,11 @@ class TweetsController < ApplicationController
 
   def new
     @tweet = Tweet.new
-    Phrase::Phrase_types_count.times {@tweet.tweet_phrases.build}
+    Phrase.phrase_types.count.times {@tweet.tweet_phrases.build}
     @phrases = Phrase.all
   end
 
   def create
-    binding.pry
     tweet = current_user.tweets.create(tweet_params)
   end
 
@@ -42,7 +41,7 @@ class TweetsController < ApplicationController
 
   private
   def tweet_params
-     params.require(:tweet).permit(:image, tweet_phrases_attributes: [:subject_id])
+     params.require(:tweet).permit(:image, tweet_phrases_attributes: [:phrase_id])
   end
 
   def move_to_index
