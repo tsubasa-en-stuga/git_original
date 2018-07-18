@@ -3,12 +3,13 @@ class ParentsController < ApplicationController
   end
 
   def create
-    Image.create(image: "")
+    binding.pry
+    Image.create(image_params)
   end
   
   private
   def image_params
-    params.requier(:id).permit(:image)
+    params.require(:image).permit(:image)
   end
   
 end
