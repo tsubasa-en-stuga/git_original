@@ -8,7 +8,7 @@ class TweetsController < ApplicationController
 
   def new
     @tweet = Tweet.new
-    Phrase.phrase_types.count.times {@tweet.tweet_phrases.build}
+    @tweet.tweet_phrases.build
     @phrases = Phrase.all
   end
 

@@ -6,27 +6,21 @@
           あたらしい 絵にっきを かく
         </h3>
         <%= f.text_field :image, placeholder: "あたらしく　かいた　絵(のURL)", autofocus: "true" %>
-        <div class="phrase_forms">
-          <%= f.label "誰が", id: "tweet_tweet_phrase_subject_id"%>
-          <%= f.label "何を", id: "tweet_tweet_phrase_object_id"%>
-          <%= f.label "どうした？", id: "tweet_tweet_phrase_verb_id"%>
-          <%= f.label "どうだった？", id: "tweet_tweet_phrase_impression_id"%>
-        </div>
-      </div>
-
-      <div class="tweet_items">
-        <div class="phrase_items">
+        <% Phrase.phrase_types.each_pair do |phrase_type, phrase_type_id|%>
           <%= f.fields_for :tweet_phrases do |tweet_phrase| %>
-            <% @phrases.each do |item| %>
-              <div id= <%= item.phrase_type %> >
-                <%= tweet_phrase.label "phrase_id_#{item.id}" do %>
-                  <%= tweet_phrase.radio_button :phrase_id, item.id%>
-                  <%= item.text %>
-                <% end %>
-              </div>
-            <% end %>
+            <%= content_tag :a, phrase_type, class: "btn phrase_type_btn"%>
+            <div class="phrase_items">
+              <% @phrases.where(phrase_type: phrase_type_id).each do |item| %>
+                <div id= <%= item.phrase_type %> >
+                  <%= tweet_phrase.label "phrase_id_#{item.id}" do %>
+                    <%= tweet_phrase.radio_button :phrase_id, item.id%>
+                    <%= item.text %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
           <% end %>
-        </div>
+        <% end %>
       </div>
       <%= f.submit value: "お友だちにみせよう" %>
     <% end %>
