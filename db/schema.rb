@@ -22,8 +22,7 @@ ActiveRecord::Schema.define(version: 20180715130334) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.string  "image",   limit: 255
-    t.integer "user_id", limit: 4
+    t.string "image", limit: 255
   end
 
   create_table "phrases", force: :cascade do |t|
