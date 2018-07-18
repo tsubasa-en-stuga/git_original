@@ -1,0 +1,20 @@
+<div class="contents row">
+  <div class="success">
+    <h3>
+      親御様用ページ
+    </h3>
+    <a class="btn" href="/">お子様用トップページへ</a>
+    <a class="btn" href="/">ログアウト</a> <%# # リンク先未設定 %>
+  </div>
+</div>
+
+<div class="contents row">
+  <div class="success">
+    
+      <%= form_for :image do |f| %>
+            <%= f.file_field :image %>
+            <%= f.submit %>
+      <% end %>
+
+  </div>
+</div>
