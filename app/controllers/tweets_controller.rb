@@ -8,15 +8,13 @@ class TweetsController < ApplicationController
 
   def new
     @tweet = Tweet.new
+    Phrase::Phrase_types_count.times {@tweet.tweet_phrases.build}
     @phrases = Phrase.all
   end
 
   def create
-    tweet = current_user.tweets.create(image: tweet_params[:image])
-    tweet.tweet_phrases.create(phrase_id: tweet_params[:tweet_phrase][:subject_id])
-    tweet.tweet_phrases.create(phrase_id: tweet_params[:tweet_phrase][:object_id])
-    tweet.tweet_phrases.create(phrase_id: tweet_params[:tweet_phrase][:verb_id])
-    tweet.tweet_phrases.create(phrase_id: tweet_params[:tweet_phrase][:impression_id])
+    binding.pry
+    tweet = current_user.tweets.create(tweet_params)
   end
 
   def destroy
@@ -44,7 +42,7 @@ class TweetsController < ApplicationController
 
   private
   def tweet_params
-     params.require(:tweet).permit(:image, tweet_phrase: [:subject_id, :object_id, :verb_id, :impression_id])
+     params.require(:tweet).permit(:image, tweet_phrases_attributes: [:subject_id])
   end
 
   def move_to_index

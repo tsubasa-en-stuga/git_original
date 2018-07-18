@@ -1,15 +1,7 @@
-.phrase_form {
-  label {
-	&.selected {
-	  font-size: 30px;
-    }
-  }
-  select {
-  	display: none;
-
-  	&.selected {
-	  width: 100px;
-	  height: 30px;
+.tweet_items {
+  .phrase_items {
+    input {
+      display: none;
     }
   }
 }
