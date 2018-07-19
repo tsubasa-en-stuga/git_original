@@ -1,6 +1,13 @@
-.tweet_items {
-  .phrase_items {
-    input {
+$accent: #57C3E9;
+
+.phrase_forms {
+  .phrase_item {
+    display: inline;
+    &:hover {
+      border-color: lighten($accent, 15%);
+      color: lighten($accent, 15%);
+    }
+    .phrase_input {
       display: none;
     }
   }
