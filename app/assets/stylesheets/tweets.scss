@@ -10,5 +10,9 @@ $accent: #57C3E9;
     .phrase_input {
       display: none;
     }
+
+    &.checked {
+      font-weight: bold;
+    }
   }
 }
