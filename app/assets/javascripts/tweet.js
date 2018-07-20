@@ -11,8 +11,7 @@ function hilight_checked_item(){
     $(this).addClass("checked")
 
     var checked_phrase = $(this).text()
-    var phrase_items_box = $(this).closest(".phrase_items")
-    var phrase_type = phrase_items_box.attr("id")
+    var phrase_type = $(this).closest(".phrase_items").attr("id")
     $(".phrase_type_btn#"+phrase_type).text(checked_phrase)
   }))
 }
