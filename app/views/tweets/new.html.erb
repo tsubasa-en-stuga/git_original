@@ -1,38 +1,33 @@
 <div class="contents row">
   <div class="container">
     <%= form_for(@tweet) do |f|%>
-      <h3>
-        あたらしい 絵にっきを かく
-      </h3>
-
-      <%= f.text_field :image, placeholder: "あたらしく　かいた　絵(のURL)", autofocus: "true" %>
-      <div class="phrase_forms">
-        <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
-          <%= f.label "誰が", id: "tweet_tweet_phrase_subject_id", class: "selected"%>
-          <div class: "phrase_form_items selected">
-            <%= tweet_phrase.select :subject_id , @phrases.subject.map{|p| [p.text, p.id]} %>
-          </div>
-        <% end %>
-
-        <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
-          <%= f.label "何を", id: "tweet_tweet_phrase_object_id"%>
-          <div class: "phrase_form_items">
-            <%= tweet_phrase.select :object_id , @phrases.object.map{|p| [p.text, p.id]} %>
-          </div>
-        <% end %>
-
-        <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
-          <%= f.label "どうした？", class: "verb"%>
-          <%= tweet_phrase.select :verb_id , @phrases.verb.map{|p| [p.text, p.id]} %>
-        <% end %>
-
-        <%= f.fields_for :tweet_phrase do |tweet_phrase| %>
-          <%= f.label "どうだった？", class: "impression"%>
-          <%= tweet_phrase.select :impression_id , @phrases.impression.map{|p| [p.text, p.id]} %>
-        <% end %>
-
+      <div class="tweet_forms">
+        <h3>
+          あたらしい 絵にっきを かく
+        </h3>
+        <%= f.text_field :image, placeholder: "あたらしく　かいた　絵(のURL)", autofocus: "true" %>
+        <div class= "phrase_forms">
+          <% Phrase.phrase_types.each_key do |phrase_type|%>
+            <%= content_tag :a, phrase_type, class: "btn phrase_type_btn", id: "#{phrase_type}", remote: true%>
+          <% end %>
+          <% Phrase.phrase_types.each_pair do |phrase_type, phrase_type_id|%>
+            <%= f.fields_for :tweet_phrases do |tweet_phrase| %>
+              <div class="phrase_items" id= "<%= phrase_type %>" >
+                <% @phrases.where(phrase_type: phrase_type_id).each do |item| %>
+                  <div class= "phrase_item">
+                    <%= tweet_phrase.label "phrase_id_#{item.id}" do %>
+                      <%= tweet_phrase.radio_button :phrase_id, item.id, class: "phrase_input"%>
+                      <%= item.text %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
       <%= f.submit value: "お友だちにみせよう" %>
     <% end %>
   </div>
 </div>
+

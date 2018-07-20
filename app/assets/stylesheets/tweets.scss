@@ -1,15 +1,23 @@
-.phrase_form {
-  label {
-	&.selected {
-	  font-size: 30px;
-    }
-  }
-  select {
-  	display: none;
+$accent: #57C3E9;
 
-  	&.selected {
-	  width: 100px;
-	  height: 30px;
+.phrase_forms {
+  .phrase_items {
+    .phrase_item {
+      display: inline;
+      &:hover {
+        border-color: lighten($accent, 15%);
+        color: lighten($accent, 15%);
+      }
+      .phrase_input {
+        display: none;
+      }
+
+      &.checked {
+        font-weight: bold;
+      }
+    }
+    &:not(#subject) {
+      display: none;
     }
   }
 }
