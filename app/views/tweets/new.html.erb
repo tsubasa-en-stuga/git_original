@@ -9,8 +9,8 @@
         <div class= "phrase_forms">
           <% Phrase.phrase_types.each_pair do |phrase_type, phrase_type_id|%>
             <%= f.fields_for :tweet_phrases do |tweet_phrase| %>
-              <%= content_tag :a, phrase_type, class: "btn phrase_type_btn"%>
-              <div class="phrase_items" id= "<%= phrase_type %>" >
+              <%= content_tag :a, phrase_type, class: "btn phrase_type_btn", id: "#{phrase_type}"%>
+              <div class="phrase_items" id= "<%= phrase_type %>"] >
                 <% @phrases.where(phrase_type: phrase_type_id).each do |item| %>
                   <div class= "phrase_item">
                     <%= tweet_phrase.label "phrase_id_#{item.id}" do %>
