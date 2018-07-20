@@ -1,18 +1,23 @@
 $accent: #57C3E9;
 
 .phrase_forms {
-  .phrase_item {
-    display: inline;
-    &:hover {
-      border-color: lighten($accent, 15%);
-      color: lighten($accent, 15%);
-    }
-    .phrase_input {
-      display: none;
-    }
+  .phrase_items {
+    .phrase_item {
+      display: inline;
+      &:hover {
+        border-color: lighten($accent, 15%);
+        color: lighten($accent, 15%);
+      }
+      .phrase_input {
+        display: none;
+      }
 
-    &.checked {
-      font-weight: bold;
+      &.checked {
+        font-weight: bold;
+      }
+    }
+    &:not(#subject) {
+      display: none;
     }
   }
 }
