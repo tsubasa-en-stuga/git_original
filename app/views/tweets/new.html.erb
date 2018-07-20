@@ -7,10 +7,12 @@
         </h3>
         <%= f.text_field :image, placeholder: "あたらしく　かいた　絵(のURL)", autofocus: "true" %>
         <div class= "phrase_forms">
+          <% Phrase.phrase_types.each_key do |phrase_type|%>
+            <%= content_tag :a, phrase_type, class: "btn phrase_type_btn", id: "#{phrase_type}", remote: true%>
+          <% end %>
           <% Phrase.phrase_types.each_pair do |phrase_type, phrase_type_id|%>
             <%= f.fields_for :tweet_phrases do |tweet_phrase| %>
-              <%= content_tag :a, phrase_type, class: "btn phrase_type_btn", id: "#{phrase_type}"%>
-              <div class="phrase_items" id= "<%= phrase_type %>"] >
+              <div class="phrase_items" id= "<%= phrase_type %>" >
                 <% @phrases.where(phrase_type: phrase_type_id).each do |item| %>
                   <div class= "phrase_item">
                     <%= tweet_phrase.label "phrase_id_#{item.id}" do %>
