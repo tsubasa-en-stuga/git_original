@@ -5,8 +5,8 @@
         <h3>
           あたらしい 絵にっきを かく
         </h3>
-        <%= content_tag :a, "あたらしく かいた　絵", class: "btn phrase_type_btn", id: "image", remote: true%>
         <div class= "phrase_forms">
+          <%= content_tag :a, "あたらしく かいた　絵", class: "btn phrase_type_btn", id: "image", remote: true%>
           <% Phrase.phrase_types.each_key do |phrase_type|%>
             <%= content_tag :a, phrase_type, class: "btn phrase_type_btn", id: "#{phrase_type}", remote: true%>
           <% end %>
@@ -24,12 +24,16 @@
               </div>
             <% end %>
           <% end %>
-          <%= fields_for :image do |image| %>
-            <% current_user.images.each do |img| %>
-              <%= label_tag :image_id, image_tag(img.image), for: "image_id_#{img.id}"%>
-              <%= radio_button_tag :image_id, img.id%>
+          <div class="phrase_items" id="image">
+            <%= fields_for :image do |image| %>
+              <% current_user.images.each do |img| %>
+                <div class="phrase_item" id="image">
+                  <%= label_tag :image_id, image_tag(img.image), for: "image_id_#{img.id}"%>
+                  <%= radio_button_tag :image_id, img.id,'', class: "phrase_input"%>
+                </div>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
       <%= f.submit value: "お友だちにみせよう" %>
