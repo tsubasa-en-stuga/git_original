@@ -5,7 +5,7 @@
         <h3>
           あたらしい 絵にっきを かく
         </h3>
-        <%= f.text_field :image, placeholder: "あたらしく　かいた　絵(のURL)", autofocus: "true" %>
+        <%= content_tag :a, "あたらしく かいた　絵", class: "btn phrase_type_btn", id: "image", remote: true%>
         <div class= "phrase_forms">
           <% Phrase.phrase_types.each_key do |phrase_type|%>
             <%= content_tag :a, phrase_type, class: "btn phrase_type_btn", id: "#{phrase_type}", remote: true%>
@@ -22,6 +22,12 @@
                   </div>
                 <% end %>
               </div>
+            <% end %>
+          <% end %>
+          <%= fields_for current_user.images do |image| %>
+            <% current_user.images.each do |img| %>
+              <%= label_tag :image, image_tag(img.image), for: "tweet_image_#{img.id}"%>
+              <%= radio_button_tag :tweet_image, img.id, id: "tweet_image_#{img.id}"%>
             <% end %>
           <% end %>
         </div>
