@@ -39,12 +39,12 @@ has_many :comments
 |カラム|データ型|NOT NULL制約|一意性制約|外部キー制約|INDEX|
 |:--:|:--:|:--:|:--:|:--:|:--:|
 |text|text|●|-|-|-|
-|phrase_type|integer|●|-|-|-|
+|form_type|integer|●|-|-|-|
 
 ```
   has_many :tweets, through: :tweet_phrases
   has_many :tweet_phrase
-  enum phrase_type: [:subject, :object, :verb, :impression]
+  enum form_type: [:subject, :object, :verb, :impression]
 ```
 
 ### tweet_phraseテーブル
