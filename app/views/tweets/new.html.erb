@@ -5,18 +5,20 @@
         <h3>
           あたらしい 絵にっきを かく
         </h3>
-        <div class= "tweet_forms">
-          <div class="form_btns">
+        <div class= "tweet_forms row">
+          <div class="form_btns row">
             <%= link_to "あたらしく かいた　絵", class: "btn form_type_btn image", id: "image_btn", remote: true do %>
               <%= image_tag "", alt: "あたらしく描いた絵", id: "image_btn_thumbnail"%>
             <% end %>
-            <% Phrase.phrase_types.each_key do |form_type|%>
-              <%= content_tag :a, form_type, class: "btn form_type_btn #{form_type}", id: "#{form_type}_btn", remote: true%>
-            <% end %>
+            <div class="phrase_type_btns">
+              <% Phrase.phrase_types.each_key do |form_type|%>
+                <%= content_tag :a, form_type, class: "btn form_type_btn #{form_type}", id: "#{form_type}_btn", remote: true%>
+              <% end %>
+            </div>
           </div>
           <% Phrase.phrase_types.each_pair do |phrase_type, phrase_type_id|%>
             <%= f.fields_for :tweet_phrases do |tweet_phrase| %>
-              <div class="form_items #{phrase_type}" id= "<%= phrase_type %>_items" >
+              <div class="form_items <%= phrase_type %>" id= "<%= phrase_type %>_items" >
                 <% @phrases.where(phrase_type: phrase_type_id).each do |item| %>
                   <div class= "form_item">
                     <%= tweet_phrase.label "phrase_id_#{item.id}" do %>
