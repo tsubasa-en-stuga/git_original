@@ -16,7 +16,7 @@ $accent: #57C3E9;
         font-weight: bold;
       }
     }
-    &:not(#subject) {
+    &:not(#type_subject) {
       display: none;
     }
   }
@@ -25,4 +25,7 @@ $accent: #57C3E9;
 img {
   height: auto;
   width: 30vw;
+  &.checked {
+    font-weight: bold;
+  }
 }
