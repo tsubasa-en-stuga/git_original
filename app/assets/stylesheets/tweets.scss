@@ -3,6 +3,7 @@ $accent: #57C3E9;
 .tweet_forms {
   .form_items {
     .form_item {
+      label {font-weight: normal;}
       display: inline;
       &:hover {
         border-color: lighten($accent, 15%);
@@ -16,7 +17,7 @@ $accent: #57C3E9;
         font-weight: bold;
       }
     }
-    &:not(#type_subject) {
+    &:not(#image_items) {
       display: none;
     }
   }
