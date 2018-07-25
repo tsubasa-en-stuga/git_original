@@ -1,8 +1,8 @@
 $accent: #57C3E9;
 
-.phrase_forms {
-  .phrase_items {
-    .phrase_item {
+.tweet_forms {
+  .form_items {
+    .form_item {
       display: inline;
       &:hover {
         border-color: lighten($accent, 15%);
@@ -16,8 +16,16 @@ $accent: #57C3E9;
         font-weight: bold;
       }
     }
-    &:not(#subject) {
+    &:not(#type_subject) {
       display: none;
     }
+  }
+}
+
+img {
+  height: auto;
+  width: 30vw;
+  &.checked {
+    font-weight: bold;
   }
 }
