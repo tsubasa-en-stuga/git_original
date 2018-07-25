@@ -13,7 +13,11 @@ function hilight_checked_item(){
 
     var form_type = $(this).closest(".form_items").attr("id").replace("_items","")
     if(form_type == "image"){
-      var hoge = $(this).closest("img");
+      var image_path = $(this).find(".image_item").attr("src")
+      debugger;
+      $("#image_btn_thumbnail").attr({
+        "src": image_path
+      });
   	}
   	else {
   	  var checked_phrase = $(this).text();
