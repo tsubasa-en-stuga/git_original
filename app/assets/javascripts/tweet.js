@@ -1,3 +1,4 @@
+$
 $(document).ready(function() { 
 	hilight_checked_item(), 
 	render_form_items()
@@ -10,13 +11,14 @@ function hilight_checked_item(){
     $(this).siblings().removeClass("checked")
     $(this).addClass("checked")
 
-
     var form_type = $(this).closest(".form_items").attr("id").replace("_items","")
     if(form_type == "image"){
-      var image_path = $(this).find(".image_item").attr("src")
-      $("#image_btn_thumbnail").attr({
-        "src": image_path
+      var image_path = $(this).css("background-image")
+      $("#image").css({
+        "background-image": image_path
       });
+      $("#image").children("h3").text("");
+
   	}
   	else {
   	  var checked_phrase = $(this).text();

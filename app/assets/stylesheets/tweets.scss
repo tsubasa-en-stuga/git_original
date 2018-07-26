@@ -1,8 +1,31 @@
+$item_height: 30vh;
+
+@mixin item_background_image_settings() {
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.form_btns {
+  .image_thumbnail {
+    background-color: $lightGray;
+    height: $item_height;
+
+    @include item_background_image_settings();
+  }
+}
+
+
 .tweet_forms {
   .form_items {
     .form_item {
       background-color: $lightGray;
-      height: 30vh;
+      height: $item_height;
+      margin: 1vh;
+
+      +.image{
+        @include item_background_image_settings();
+      }
 
       label {
         font-weight: normal;
@@ -18,16 +41,6 @@
 
       &.checked {
         font-weight: bold;
-      }
-
-
-      + .image {
-        display: inline-block;
-        max-height: 30vw;
-
-        img {
-          position: relative;
-        }
       }
     }
     &:not(#image_items) {

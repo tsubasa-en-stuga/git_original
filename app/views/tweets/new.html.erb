@@ -3,8 +3,10 @@
     <h3>あたらしい 絵にっきを かく</h3>
 
     <div class="form_btns row">
-      <%= link_to "あたらしく かいた　絵", class: "btn form_type_btn image", id: "image_btn", remote: true do %>
-        <%= image_tag "", alt: "あたらしく描いた絵", id: "image_btn_thumbnail"%>
+      <%= link_to "あたらしく かいた　絵", class: "btn form_type_btn image col-md-12 col-sm-12 col-xs-12 ", id: "image_btn", remote: true do %>
+        <%= content_tag(:div, class: "image_thumbnail thumbnail", id: "image") do%>
+          <h3>あたらしく かいた　絵</h3>
+        <% end %>
       <% end %>
       <div class="phrase_type_btns row">
         <% Phrase.phrase_types.each_key do |form_type|%>
@@ -13,13 +15,13 @@
       </div>
     </div>
 
-    <%= form_for(@tweet) do |f|%>
-      <div class= "tweet_forms row">
+    <div class= "tweet_forms row">
+      <%= form_for(@tweet) do |f|%>
         <% Phrase.phrase_types.each_pair do |phrase_type, phrase_type_id|%>
           <%= f.fields_for :tweet_phrases do |tweet_phrase| %>
             <div class="form_items <%= phrase_type %>" id= "<%= phrase_type %>_items" >
               <% @phrases.where(phrase_type: phrase_type_id).each do |item| %>
-                <div class= "form_item col-md-3 col-md-offset-1  col-sm-5 col-sm-offset-1 col-xs-5 col-xs-offset-1 ">
+                <div class= "form_item col-md-4 col-sm-6 col-xs-6 thumbnail">
                   <%= tweet_phrase.label "phrase_id_#{item.id}" do %>
                     <%= tweet_phrase.radio_button :phrase_id, item.id, class: "phrase_input"%>
                     <%= item.text %>
@@ -32,16 +34,16 @@
         <div class="form_items image row" id="image_items">
           <%= fields_for :image do |image| %>
             <% current_user.images.each do |img| %>
-              <div class="form_item image col-sm-6 col-md-4 thumbnail" id="image">
-                <%= label_tag :image_id, "hoge",for: "image_id_#{img.id}"%>
+              <%= content_tag(:div, class: "form_item image col-md-4 col-sm-6 col-xs-6 thumbnail", style: "background-image:url(#{img.image.url})") do%>
+                <%= label_tag :image_id, "",for: "image_id_#{img.id}"%>
                 <%= radio_button_tag :image_id, img.id,'', class: "phrase_input"%>
-              </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
         <%= f.submit value: "お友だちにみせよう" %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
 
   </div>
 </div>
