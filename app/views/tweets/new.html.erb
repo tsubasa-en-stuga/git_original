@@ -19,7 +19,7 @@
           <%= f.fields_for :tweet_phrases do |tweet_phrase| %>
             <div class="form_items <%= phrase_type %>" id= "<%= phrase_type %>_items" >
               <% @phrases.where(phrase_type: phrase_type_id).each do |item| %>
-                <div class= "form_item">
+                <div class= "form_item col-md-3 col-md-offset-1  col-sm-5 col-sm-offset-1 col-xs-5 col-xs-offset-1 ">
                   <%= tweet_phrase.label "phrase_id_#{item.id}" do %>
                     <%= tweet_phrase.radio_button :phrase_id, item.id, class: "phrase_input"%>
                     <%= item.text %>

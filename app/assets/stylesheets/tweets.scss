@@ -1,11 +1,8 @@
-$accent: #57C3E9;
-
 .tweet_forms {
-
   .form_items {
     .form_item {
-      background-size: cover;
-      background-position: center center;
+      background-color: $lightGray;
+      height: 30vh;
 
       label {
         font-weight: normal;
