@@ -6,4 +6,8 @@ class Tweet < ActiveRecord::Base
   has_one :image
 
   accepts_nested_attributes_for :tweet_phrases
+
+  def created_at
+    self['created_at'].to_s(:date)
+  end
 end
