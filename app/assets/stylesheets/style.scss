@@ -321,6 +321,7 @@ div.contents.row {
     background-color: $white;
     box-sizing: border-box;
     text-align: center;
+    overflow: auto;
     h3 {
       @include baseMargin;
     }

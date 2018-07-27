@@ -6,6 +6,8 @@ $item_height: 30vh;
   background-repeat: no-repeat;
 }
 
+
+//投稿機能に関して
 .form_btns {
   .image_thumbnail {
     background-color: $lightGray;
@@ -46,5 +48,16 @@ $item_height: 30vh;
     &:not(#image_items) {
       display: none;
     }
+  }
+}
+
+//親用ページに関して
+.parents {
+  overflow: auto;
+  .image_item {
+    background-color: $lightGray;
+    height: $item_height;
+    margin: 1vh;
+    @include item_background_image_settings();
   }
 }

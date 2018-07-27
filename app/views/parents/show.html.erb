@@ -1,4 +1,4 @@
-<div class="contents row">
+<div class="contents row parents">
   <div class="success">
     <h3>
       親御様用ページ
@@ -6,15 +6,21 @@
     <a class="btn" href="/">お子様用トップページへ</a>
     <a class="btn" href="/">ログアウト</a> <%# # リンク先未設定 %>
   </div>
-</div>
 
-<div class="contents row">
   <div class="success">
-    
-      <%= form_for :image do |f| %>
-            <%= f.file_field :image %>
-            <%= f.submit %>
-      <% end %>
+    <%= form_for :image do |f| %>
+      <%= f.file_field :image %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 
+  <div class="success">
+    <h2>画像一覧</h2>
+    <div class="images">
+      <% current_user.images.each do |img| %>
+        <%= content_tag :div, class: "image_item col-md-4 col-sm-6 col-xs-6", style: "background-image:url(#{img.image.url})" do %>
+        <% end %>
+      <% end %>
+    </div>  
   </div>
 </div>
