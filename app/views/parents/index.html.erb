@@ -1,10 +1,16 @@
 <div class="contents row">
-    <h3>
-      ようこそ　×××　へ
+    <h3 class="welcome_title">
+      なつの絵にっき
     </h3>
 
-      <a class="btn" id="mypage_btn" href="/">マイページへ</a>
-      <%#= 親御様用ページへの隠しボタン（時間設定まだ） %>
+    <%#= 親御様用ページへの隠しボタン（時間リセットまだ） %>
+    <span  class="menu">
+      <a><%= current_user.nickname %></a>
+        <ul>
+            <li><a href="/parents/:id">親御様用ページへ</a>
+            </li>
+        </ul>
+    </span>
           
     <%= image_tag("oekaki.png") %>
   <div class="success">
