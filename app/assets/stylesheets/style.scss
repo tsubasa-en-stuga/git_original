@@ -381,4 +381,110 @@ footer {
   font-size: 50px;
   color: $dark;
   font-family: 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
-  margin: 0;}
+  margin: 0;
+}
+
+.welcome_btn {
+    display: inline;
+}
+
+.welcome_btn_item {
+    @include basePadding(37px 2px);
+    vertical-align: middle;
+    font-size: 14px;
+    width: 212px;
+    height: 100px;
+    border: 2px solid $accent;
+    color: $accent;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 3px;
+    display: inline-block;
+  &:hover {
+    border-color: lighten($accent, 15%);
+    color: lighten($accent, 15%);
+  }
+}
+
+ul.hide_btn {
+  width: 1200px;
+  min-height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0;
+  text-align: center;
+}
+ul.hide_btn > li {
+  width: 30%;
+  display: inline-block;
+  position: right;
+  box-sizing: border-box;
+  font-size: 16px;
+  vertical-align: top;
+}
+ul.hide_btn > li:after {
+  content: "";
+  display: block;
+  margin-left: -5px;
+  margin-top: -10px;
+  position: absolute;
+  left: 50%;
+  top: 3em;
+  border: 5px solid transparent;
+}
+ul.hide_btn li a {
+    @include basePadding(8px 20px);
+    font-size: 20px;
+    color: $dark;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+  &:hover {
+    color: lighten($dark, 15%);
+  }
+}
+ul.hide_btn > li a:hover {
+  opacity: 0.7;
+}
+ul.hide_btn li ul.second {
+  display: none;
+}
+ul.hide_btn li.hover ul.second {
+  display: block;
+}
+ul.hide_btn li ul.second li {
+  position: relative;
+}
+ul.hide_btn li ul.second > li:after {
+  content: "";
+  display: block;
+  margin-left: -15px;
+  margin-top: -5px;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  border: 5px solid transparent;
+}
+ul.hide_btn li:last-child ul.second > li:after {
+  margin-left: auto;
+  margin-right: -15px;
+  left: auto;
+  right: 100%;
+}
+ul.hide_btn li ul.second li a {
+  background-color: $lightGray;
+}
+ul.hide_btn li ul.second li ul.third {
+  display: none;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+ul.hide_btn li:last-child ul.second li ul.third {
+  left: auto;
+  right: 100%;
+}
+ul.hide_btn li ul.second li.hover ul.third {
+  display: block;
+}
