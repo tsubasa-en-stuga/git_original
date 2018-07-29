@@ -1,5 +1,9 @@
 <% tweet_phrases = tweet.tweet_phrases %>
-<div class="content_post" style="background-image: url(<%= tweet.image.image %>);">
+
+<div class="tweet_content">
+  <div class= "user_avatar">
+    <span class= "user_name"><%= tweet.user.nickname %></span>
+  </div>
   <div class="more">
     <span><%= image_tag 'arrow_top.png' %></span>
     <ul class="more_list">
@@ -10,14 +14,18 @@
       <% end %>
     </ul>
   </div>
-  <%= tweet.created_at%>
-  <%= simple_format(tweet.phrases.order("phrase_type ASC").map{|p| p.text}.join) %>
-  
-  <span class="name">
-    <a href="">
+  <div class="content_text">
+    <div class="text_date">
+      <span><%= tweet.created_at%></span>
+    </div>
+    <div class="text_body">
+      <div class= "first"><%= tweet.first_sentence %>。</div>
+      <div class= "second"><p><%= tweet.second_sentence %>。</p></div>
+    </div>
+    <div class="content_text__polygon"></div>
+  </div>
 
-      <span>この絵にっきを かいたのは</span><%= tweet.user.nickname %>
-    </a>      
-  </span>
+  <div class="content_image" style="background-image: url(<%= tweet.image.image %>);">
+  </div>
 </div>
   
