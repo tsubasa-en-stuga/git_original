@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180715130334) do
+ActiveRecord::Schema.define(version: 20180715123611) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -21,8 +21,13 @@ ActiveRecord::Schema.define(version: 20180715130334) do
     t.datetime "updated_at"
   end
 
+  add_index "comments", ["tweet_id"], name: "fk_rails_bea193dd32", using: :btree
+  add_index "comments", ["user_id"], name: "fk_rails_03de2dc08c", using: :btree
+
   create_table "images", force: :cascade do |t|
-    t.string "image", limit: 255
+    t.string  "image",    limit: 255
+    t.integer "user_id",  limit: 4
+    t.integer "tweet_id", limit: 4
   end
 
   create_table "phrases", force: :cascade do |t|
@@ -43,16 +48,13 @@ ActiveRecord::Schema.define(version: 20180715130334) do
   add_index "tweet_phrases", ["tweet_id"], name: "index_tweet_phrases_on_tweet_id", using: :btree
 
   create_table "tweets", force: :cascade do |t|
-    t.text     "text",       limit: 65535
+    t.integer  "user_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id",    limit: 4
-    t.string   "image",      limit: 255
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "nickname",               limit: 255
     t.string   "encrypted_password",     limit: 255, default: "", null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
@@ -64,11 +66,15 @@ ActiveRecord::Schema.define(version: 20180715130334) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.string   "nickname",               limit: 255
+    t.string   "avatar",                 limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "comments", "tweets"
+  add_foreign_key "comments", "users"
   add_foreign_key "tweet_phrases", "phrases"
   add_foreign_key "tweet_phrases", "tweets"
 end
