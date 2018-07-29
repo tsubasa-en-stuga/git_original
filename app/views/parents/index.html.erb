@@ -1,25 +1,26 @@
 <div class="contents row">
-    <h3 class="welcome_title">
-      なつの絵にっき
-    </h3>
+  <h3 class="welcome_title">
+    なつの絵にっき
+  </h3>
 
-    <%#= 親御様用ページへの隠しボタン %>
-      <ul class="hide_btn">
-        <li> <a><%= current_user.nickname %></a>
-          <ul class="second">
-            <li><a href="/parents/:id">親御様用ページへ</a>
-            </li>
-          </ul>
+  <%#= 親御様用ページへの隠しボタン %>
+  <ul class="hide_btn">
+    <li> <a><%= current_user.nickname %></a>
+      <ul class="second">
+        <li><%= link_to "親御様用ページへ", parent_path(current_user) %>
         </li>
       </ul>
+    </li>
+  </ul>
           
-    <%= image_tag("oekaki.png") %>
+  <%= image_tag("oekaki.png") %>
+  
   <div >
     <% if user_signed_in? %>
     <a class="welcome_btn">
-      <a class="welcome_btn_item" href="/tweets/new">絵にっきをかく</a>
-      <a class="welcome_btn_item" href="/tweets">みんなの絵にっきを見る</a>
-      <a class="welcome_btn_item" href="/tweets/:id"><%= current_user.nickname %>の絵にっきを見る</a>
+      <%= link_to "絵にっきをかく", new_tweet_path(current_user), class: 'welcome_btn_item' %>
+      <%= link_to "みんなの絵にっきを見る", tweets_path(current_user), class: 'welcome_btn_item' %>
+      <%= link_to "#{current_user.nickname}の絵にっきを見る", user_path(current_user), class: 'welcome_btn_item' %>
     </a>
     <% else %>
       <%= link_to "ログイン", new_user_session_path, class: 'post', class: 'btn'%>

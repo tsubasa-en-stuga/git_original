@@ -1,14 +1,8 @@
-function menuShowDelay (element, delayTime) { 
-  var sethover;
-  var setleave;
-  var setnexthover;
-  var targetOn;
-  var targetOff;
+function menuShowDelay (delayTime) { 
   var nowActive = -1;
   var hoverClass = 'hover';
-  var manuElement = element;
   var hoverTime = delayTime;
-  manuElement.on({
+  $('ul.hide_btn > li').on({
     'mouseenter': function(){
       targetOn = $(this);
       if(nowActive === -1){
@@ -50,6 +44,5 @@ function menuShowDelay (element, delayTime) {
   });
 }
 $(function(){
-  menuShowDelay($('ul.hide_btn > li'), 4000);
-  menuShowDelay($('ul.second > li'), 100);
+  menuShowDelay(4000);
 });
