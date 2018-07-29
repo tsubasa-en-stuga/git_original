@@ -2,7 +2,6 @@ class ParentsController < ApplicationController
   def index
   end
 
-  
   def show
     @user = current_user
   end
@@ -11,10 +10,9 @@ class ParentsController < ApplicationController
     image = current_user.images.create(image_params)
   end
   
-  
   private
   def image_params
-    params.require(:image).permit(:image, :avatar)
+    params.require(:image).permit(:image)
   end
   
 end
