@@ -238,7 +238,7 @@ div.contents.row {
     .user_avatar {
       position :relative;
       width: 150px;
-      height: 150px;
+      height: 100px;
       margin: auto 0;
       background-color: $white;
       border: 2px solid #000000;
@@ -246,10 +246,12 @@ div.contents.row {
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       border-radius: 100px;
       text-align: center;
+      background-position: center center;
+      background-repeat: no-repeat;
 
       .user_name {
         position: absolute;
-        bottom: 0;
+        bottom: -30px;
         right: 0;
         left: 0;
       }

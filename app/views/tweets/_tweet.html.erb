@@ -1,7 +1,7 @@
 <% tweet_phrases = tweet.tweet_phrases %>
 
 <div class="tweet_content">
-  <div class= "user_avatar">
+  <div class= "user_avatar" style="background-image: url(<%= tweet.user.avatar %>);">
     <span class= "user_name"><%= tweet.user.nickname %></span>
   </div>
   <div class="more">
