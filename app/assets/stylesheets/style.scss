@@ -13,7 +13,7 @@
     font-style: normal;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Unica+One);
+@import url(https://fonts.googleapis.com/css?family=Unica+One);
 
 $accent: #57C3E9;
 $black: #292929;
@@ -169,11 +169,7 @@ header.header {
       font-size: 1em;
       cursor: pointer;
       position: relative;
-      &:after {
-        content: '▼';
-        font-size: .7em;
-        margin-left: -4px;
-      }
+      float: right;
       &:hover ul {
         color: $accent;
         display: block;
@@ -407,4 +403,106 @@ footer {
   p {
     text-align: center;
   }
+}
+
+.welcome_title {
+  text-align: center;
+  line-height: 1.57;
+  letter-spacing: 0.15em;
+  font-size: 50px;
+  color: $dark;
+  font-family: 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+  margin: 0;
+}
+
+.welcome_btn {
+    display: inline;
+}
+
+.welcome_btn_item {
+    @include basePadding(37px 2px);
+    vertical-align: middle;
+    font-size: 14px;
+    width: 212px;
+    height: 100px;
+    border: 2px solid $accent;
+    color: $accent;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 3px;
+    display: inline-block;
+  &:hover {
+    border-color: lighten($accent, 15%);
+    color: lighten($accent, 15%);
+  }
+}
+
+ul.hide_btn {
+  width: auto;
+  min-height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0;
+  text-align: right;
+  
+  > li {
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 16px;
+    vertical-align: top;
+    
+    ul.second {
+      display: none;
+  
+    > li {
+      position: relative;
+      
+      :after {
+        content: "";
+        display: block;
+        margin-left: -15px;
+        margin-top: -5px;
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        border: 5px solid transparent;
+        
+        a {
+          background-color: $lightGray;
+            
+          :after {
+            content: "";
+            display: block;
+            margin-left: -5px;
+            margin-top: -10px;
+            position: absolute;
+            left: 50%;
+            top: 3em;
+            border: 5px solid transparent;
+      
+             a {
+              @include basePadding(8px 20px);
+              font-size: 20px;
+              color: $dark;
+              font-weight: bold;
+              display: block;
+                
+              &:hover {
+                color: lighten($dark, 15%);
+                
+                > li a:hover {
+                  opacity: 0.7;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }  
+}
+
+ul.hide_btn li.hover ul.second {
+  display: block;
 }
