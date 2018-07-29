@@ -296,6 +296,7 @@ div.contents.row {
       height: auto;
       width: 350px;
       border-radius: $baseRadius;
+      border: $white solid;
       background-color: $lightGray;
       @include item_background_image_settings();
     }
