@@ -1,8 +1,37 @@
-$accent: #57C3E9;
+$item_height: 30vh;
+
+@mixin item_background_image_settings() {
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+//投稿機能に関して
+.form_btns {
+  .image_thumbnail {
+    background-color: $lightGray;
+    height: $item_height;
+
+    @include item_background_image_settings();
+  }
+}
+
 
 .tweet_forms {
   .form_items {
     .form_item {
+      background-color: $lightGray;
+      height: $item_height;
+      margin: 1vh;
+
+      +.image{
+        @include item_background_image_settings();
+      }
+
+      label {
+        font-weight: normal;
+      }
       display: inline;
       &:hover {
         border-color: lighten($accent, 15%);
@@ -16,16 +45,19 @@ $accent: #57C3E9;
         font-weight: bold;
       }
     }
-    &:not(#type_subject) {
+    &:not(#image_items) {
       display: none;
     }
   }
 }
 
-img {
-  height: auto;
-  width: 30vw;
-  &.checked {
-    font-weight: bold;
+//親用ページに関して
+.parents {
+  overflow: auto;
+  .image_item {
+    background-color: $lightGray;
+    height: $item_height;
+    margin: 1vh;
+    @include item_background_image_settings();
   }
 }

@@ -1,7 +1,5 @@
-<div class="contents row">
-    <h3>
-      ここは親御様用ページです
-    </h3>
+<div class="contents row parents">
+  <h3>保護者用ページ</h3>
   <div class="success">
     <a class="btn" href="/">お子様用トップページへ</a>
     <% if user_signed_in? %>
@@ -14,20 +12,21 @@
   </div>
 
   <div class="success">
-    <h3>
-      アバター画像
-    </h3>
+    <h3>アバター画像</h3>
     <%= image_tag(@user.avatar) %>
   </div>
-
   <div class="success">
-    <h3>
-      お子様の絵の画像をアップロードしてください
-    </h3>    
+    <h3>お子様の絵の画像をアップロードしてください</h3>    
     <%= form_for :image do |f| %>
       <%= f.file_field :image %>
       <%= f.submit %>
     <% end %>
-
+    <h3>画像一覧</h3>
+    <div class="images">
+      <% current_user.images.each do |img| %>
+        <%= content_tag :div, class: "image_item col-md-4 col-sm-6 col-xs-6", style: "background-image:url(#{img.image.url})" do %>
+        <% end %>
+      <% end %>
+    </div>  
   </div>
 </div>
