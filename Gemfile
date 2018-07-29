@@ -54,3 +54,6 @@ gem 'sprockets', '2.11.0'
 gem 'kaminari'
 gem 'devise'
 gem 'carrierwave'
+group :production do
+  gem 'rails_12factor'
+end
