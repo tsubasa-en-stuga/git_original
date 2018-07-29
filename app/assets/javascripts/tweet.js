@@ -1,5 +1,4 @@
-$
-$(document).ready(function() { 
+$(function() { 
 	hilight_checked_item(), 
 	render_form_items()
 });
