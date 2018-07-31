@@ -31,10 +31,14 @@
         <% end %>
         <div class="form_items image row" id="image_items">
           <%= fields_for :image do |image| %>
-            <% current_user.newer_images.each do |img| %>
-              <%= label_tag :image_id, "",for: "image_id_#{img.id}", class: "form_item image col-md-4 col-sm-6 col-xs-6 thumbnail", style: "background-image:url(#{img.image.url})" do %>
-                <%= radio_button_tag :image_id, img.id,'', class: "phrase_input"%>
+            <% if current_user.newer_images.present? %>
+              <% current_user.newer_images.each do |img| %>
+                <%= label_tag :image_id, "",for: "image_id_#{img.id}", class: "form_item image col-md-4 col-sm-6 col-xs-6 thumbnail", style: "background-image:url(#{img.image.url})" do %>
+                  <%= radio_button_tag :image_id, img.id,'', class: "phrase_input"%>
+                <% end %>
               <% end %>
+            <% else %>
+              <div class="alert alert-warning" role="alert">画像が登録されていません！</div>
             <% end %>
           <% end %>
         </div>
