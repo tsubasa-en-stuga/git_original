@@ -418,6 +418,13 @@ footer {
   margin: 0;
 }
 
+.welcome_logo {
+  display: block;
+  height: 150px;
+  width: auto;
+  @include baseMargin(0 auto);
+}
+
 .welcome_btn {
     display: inline;
 }
