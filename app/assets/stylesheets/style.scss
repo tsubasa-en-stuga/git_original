@@ -133,66 +133,60 @@ header.header {
   left: 0;
   right: 0;
   z-index: 5;
+
   div.header__bar.row {
     position: relative;
-    h1.grid-6 {
-      font-size: 20px;
-      line-height: 41px;
-      float: left;
-      a {
-        display: block;
+    font-size: 20px;
+    line-height: 41px;
+    tect-align: center;
+    a {
+      display: block;
+      img.header_logo {
+        height: 80px;
       }
     }
-    div.grid-6 {
-      float: right;
-      text-align: right;
-      a.post {
-        @extend .btn;
-        width: 120px;
-        display: inline-left;
-        margin-left: 10px;
-      }
-    }
-  }
+
   .user_nav {
     position: relative;
     height: 100px;
     position: absolute;
     right: 0;
-    span {
-      top: 5px;
-      display: block;
-      float: left;
-      margin-left: 30px;
-      width: 150px;
-      height: 50px;
-      font-size: 1em;
-      cursor: pointer;
-      position: relative;
-      float: right;
-      &:hover ul {
-        color: $accent;
+      span {
+        top: 40px;
+        left: 50px;
         display: block;
-      }
-    }
-    ul {
-      display: none;
-      position: absolute;
-      top: 46px;
-      right: 0;
-      border-left: 1px solid #d8d8d8;
-      border-right: 1px solid #d8d8d8;
-      box-shadow: 1px 2px 5px rgba(0,0,0,0.1);
-      li {
-        background-color: #f0f0f0;
-        a {
+        margin-left: 30px;
+        width: 150px;
+        height: 50px;
+        font-size: 2em;
+        cursor: pointer;
+        position: relative;
+        float: right;
+        &:hover ul {
+          color: $accent;
           display: block;
-          padding: 10px 20px;
-          text-align: left;
-          border-bottom: 1px solid #d8d8d8;
         }
       }
-     }
+      ul {
+        display: none;
+        position: relative;
+        height: auto;
+        width: 300px; 
+        border-left: 1px solid #d8d8d8;
+        border-right: 1px solid #d8d8d8;
+        box-shadow: 1px 2px 5px rgba(0,0,0,0.1);
+        li {
+          background-color: #f0f0f0;
+          font-size: 20px;
+          a {
+            display: block;
+            padding: 10px 20px;
+            text-align: left;
+            border-bottom: 1px solid #d8d8d8;
+          }
+        }
+      }
+    }
   }
 }
 .form {

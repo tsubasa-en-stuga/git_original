@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
     <title>なつの絵にっき</title>
-    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -22,13 +20,32 @@
       })();
     </script>
   </head>
-  
-<body>
-  <%= yield %>
-<footer>
-      <p>
-        Copyright 2018 Team Enikki All Rights Reserved.
-      </p>
-    </footer>
+
+  <body>
+
+    <header class="header">
+      <div class="header__bar row">
+        <h1 class="grid-6">
+          <%= link_to root_path do %>
+            <%= image_tag("logo.png", class: "header_logo")  %>
+          <% end %>
+        </h1>
+        <div class="user_nav grid-6">
+          <% if user_signed_in? %>
+            <span><%= current_user.nickname %>
+              <ul class="user__info">
+                <li>
+                  <%= link_to "絵にっきをかく", new_tweet_path(current_user) %>
+                  <%= link_to "みんなの絵にっきを見る", tweets_path(current_user) %>
+                  <%= link_to "#{current_user.nickname}の絵にっきを見る", user_path(current_user) %>
+                </li>
+              </ul>
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </header>
+    <%= yield %>
+    <footer><p>Copyright 2018 Team Enikki All Rights Reserved.</p></footer>
   </body>
 </html>
