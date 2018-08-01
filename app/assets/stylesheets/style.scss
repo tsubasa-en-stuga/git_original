@@ -265,7 +265,9 @@ div.contents.row {
         text-align: center;
         line-height: 100%;
         font-size: 20px;
-        @include basePadding(60px 10px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .text_body {
@@ -275,6 +277,9 @@ div.contents.row {
         border-radius: $baseRadius;
         @include basePadding(20px 20px);
         font-size: 20px;
+        &.post {
+          @include basePadding(5px 20px);
+        }
       }
       .content_text__polygon {
         position: absolute;
@@ -298,6 +303,10 @@ div.contents.row {
       border: $white solid;
       background-color: $lightGray;
       @include item_background_image_settings();
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
     }
 
     .more {

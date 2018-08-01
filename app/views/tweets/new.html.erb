@@ -9,15 +9,11 @@
       <div class="text_date">
         <span><%= DateTime.now.to_s(:date) %></span>
       </div>
-      <div class="text_body">
-        <div class="first">
-          <%= content_tag :span, "ぼくは", class: "form_type_btn subject", id: "subject_btn"%>
-          <%= content_tag :span, "がっこうに", class: "form_type_btn object", id: "object_btn"%>
-        </div>
-        <div class="first">
-          <%= content_tag :span, "いった", class: "form_type_btn verb", id: "verb_btn"%>
-          <%= content_tag :span, "たのしかった", class: "form_type_btn impression", id: "impression_btn"%>
-        </div>
+      <div class="text_body post">
+        <%= content_tag :div, "ぼくは", class: "form_type_btn subject", id: "subject_btn"%>
+        <%= content_tag :div, "がっこうに", class: "form_type_btn object", id: "object_btn"%>
+        <%= content_tag :div, "いった", class: "form_type_btn verb", id: "verb_btn"%>
+        <%= content_tag :div, "たのしかった", class: "form_type_btn impression", id: "impression_btn"%>
       </div>
       <div class="content_text__polygon"></div>
     </div>
