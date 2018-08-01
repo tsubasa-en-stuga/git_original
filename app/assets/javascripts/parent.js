@@ -4,7 +4,6 @@ $(function parent_btn_show_delay(){
   $("#header_user").on({
     'mouseenter': function() {
       setTimeout(function(){
-        $("#parent_btn").show();
         $("#parent_btn").css('display', 'block');
       }, delayTime);
     },
