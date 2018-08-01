@@ -279,6 +279,10 @@ div.contents.row {
         font-size: 20px;
         &.post {
           @include basePadding(5px 20px);
+
+          .form_type_btn:hover {
+            color: $white;
+          }
         }
       }
       .content_text__polygon {
@@ -306,7 +310,9 @@ div.contents.row {
       display: flex;
       justify-content: center;
       align-items: center;
-
+      &.form_type_btn:hover {
+        background-color: $accent;
+      }
     }
 
     .more {
