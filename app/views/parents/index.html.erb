@@ -1,13 +1,4 @@
 <div class="contents row">
-  <%#= 親御様用ページへの隠しボタン %>
-  <ul class="hide_btn">
-    <li> <a><%= current_user.nickname %></a>
-      <ul class="second">
-        <li><%= link_to "保護者用ページへ", parent_path(current_user) %>
-        </li>
-      </ul>
-    </li>
-  </ul>
   <%= image_tag("oekaki.png", class: "welcome_image") %>  
   <div>
     <% if user_signed_in? %>

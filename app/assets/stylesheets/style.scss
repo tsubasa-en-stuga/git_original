@@ -183,6 +183,9 @@ header.header {
             padding: 10px 20px;
             text-align: left;
             border-bottom: 1px solid #d8d8d8;
+            + #parent_btn {
+              display: none;
+            }
           }
         }
       }
@@ -439,74 +442,4 @@ footer {
     border-color: lighten($accent, 15%);
     color: lighten($accent, 15%);
   }
-}
-
-ul.hide_btn {
-  width: auto;
-  min-height: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 0;
-  text-align: right;
-  
-  > li {
-    display: inline-block;
-    box-sizing: border-box;
-    font-size: 16px;
-    vertical-align: top;
-    
-    ul.second {
-      display: none;
-  
-    > li {
-      position: relative;
-      
-      :after {
-        content: "";
-        display: block;
-        margin-left: -15px;
-        margin-top: -5px;
-        position: absolute;
-        left: 100%;
-        top: 50%;
-        border: 5px solid transparent;
-        
-        a {
-          background-color: $lightGray;
-            
-          :after {
-            content: "";
-            display: block;
-            margin-left: -5px;
-            margin-top: -10px;
-            position: absolute;
-            left: 50%;
-            top: 3em;
-            border: 5px solid transparent;
-      
-             a {
-              @include basePadding(8px 20px);
-              font-size: 20px;
-              color: $dark;
-              font-weight: bold;
-              display: block;
-                
-              &:hover {
-                color: lighten($dark, 15%);
-                
-                > li a:hover {
-                  opacity: 0.7;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }  
-}
-
-ul.hide_btn li.hover ul.second {
-  display: block;
 }

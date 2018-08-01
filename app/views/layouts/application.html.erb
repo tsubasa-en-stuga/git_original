@@ -32,12 +32,13 @@
         </h1>
         <div class="user_nav grid-6">
           <% if user_signed_in? %>
-            <span><%= current_user.nickname %>
+            <span id="header_user"><%= current_user.nickname %>
               <ul class="user__info">
                 <li>
                   <%= link_to "絵にっきをかく", new_tweet_path(current_user) %>
                   <%= link_to "みんなの絵にっきを見る", tweets_path(current_user) %>
                   <%= link_to "#{current_user.nickname}の絵にっきを見る", user_path(current_user) %>
+                  <%= link_to "保護者用ページへ", parent_path(current_user), id: "parent_btn" %>
                 </li>
               </ul>
             </span>
