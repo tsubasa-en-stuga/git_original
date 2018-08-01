@@ -1,12 +1,12 @@
 <div class="contents row">
-  <%= image_tag("oekaki.png", class: "welcome_image") %>  
-  <div>
+  <div class="welcome_content">
+    <%= image_tag("oekaki.png", class: "welcome_image") %>  
     <% if user_signed_in? %>
-      <a class="welcome_btn">
+      <div class="welcome_btn">
         <%= link_to "絵にっきをかく", new_tweet_path(current_user), class: 'welcome_btn_item' %>
         <%= link_to "みんなの絵にっきを見る", tweets_path(current_user), class: 'welcome_btn_item' %>
         <%= link_to "#{current_user.nickname}の絵にっきを見る", user_path(current_user), class: 'welcome_btn_item' %>
-      </a>
+      </div>
     <% else %>
       <%= link_to "ログイン", new_user_session_path, class: 'post', class: 'btn'%>
       <%= link_to "新規登録", new_user_registration_path, class: 'post', class: 'btn'%>

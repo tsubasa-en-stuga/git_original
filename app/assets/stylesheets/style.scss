@@ -405,41 +405,29 @@ footer {
   }
 }
 
-.welcome_title {
-  text-align: center;
-  line-height: 1.57;
-  letter-spacing: 0.15em;
-  font-size: 50px;
-  color: $dark;
-  font-family: 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
-  margin: 0;
-}
+.welcome_content {
+  .welcome_image {
+    margin-top: 50px;
+  }
 
-.welcome_logo {
-  display: block;
-  height: 150px;
-  width: auto;
-  @include baseMargin(0 auto);
-}
-
-.welcome_btn {
+  .welcome_btn {
     display: inline;
-}
-
-.welcome_btn_item {
-    @include basePadding(37px 2px);
-    vertical-align: middle;
-    font-size: 14px;
-    width: 212px;
-    height: 100px;
-    border: 2px solid $accent;
-    color: $accent;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 3px;
-    display: inline-block;
-  &:hover {
-    border-color: lighten($accent, 15%);
-    color: lighten($accent, 15%);
+    .welcome_btn_item {
+        @include basePadding(37px 2px);
+        vertical-align: middle;
+        font-size: 14px;
+        width: 212px;
+        height: 100px;
+        border: 2px solid $accent;
+        color: $accent;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 3px;
+        display: inline-block;
+      &:hover {
+        border-color: lighten($accent, 15%);
+        color: lighten($accent, 15%);
+      }
+    }
   }
 }
