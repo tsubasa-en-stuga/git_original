@@ -4,6 +4,7 @@ class CreateImages < ActiveRecord::Migration
       t.string :image
       t.references :user
       t.references :tweet
+      t.timestamps
     end
   end
 end

@@ -1,7 +1,7 @@
 <% tweet_phrases = tweet.tweet_phrases %>
 
 <div class="tweet_content">
-  <div class= "user_avatar">
+  <div class= "user_avatar" style="background-image: url(<%= tweet.user.avatar %>);">
     <span class= "user_name"><%= tweet.user.nickname %></span>
   </div>
   <div class="more">
@@ -20,12 +20,15 @@
     </div>
     <div class="text_body">
       <div class= "first"><%= tweet.first_sentence %>。</div>
-      <div class= "second"><p><%= tweet.second_sentence %>。</p></div>
+      <div class= "second"><%= tweet.second_sentence %>。</div>
     </div>
     <div class="content_text__polygon"></div>
   </div>
 
-  <div class="content_image" style="background-image: url(<%= tweet.image.image %>);">
-  </div>
+  <% if tweet.image %>
+    <div class="content_image" style="background-image: url(<%= tweet.image.image %>);"></div>
+  <% else %>
+    <div class="content_image"></div>
+  <% end %>
 </div>
   

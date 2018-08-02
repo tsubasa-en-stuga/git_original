@@ -23,7 +23,7 @@
     <% end %>
     <h3>画像一覧</h3>
     <div class="images">
-      <% current_user.images.each do |img| %>
+      <% current_user.newer_images.each do |img| %>
         <%= content_tag :div, class: "image_item col-md-4 col-sm-6 col-xs-6", style: "background-image:url(#{img.image.url})" do %>
         <% end %>
       <% end %>
