@@ -1,8 +1,10 @@
 <div class="contents row">
   <p><%= @nickname %>さんの　いままでの絵にっき</p>
-  <% @tweets.each do |tweet| %>
-    <%= render(tweet) %>
-  <% end %>
-  <%= paginate(@tweets) %>
+  <div class="success">
+    <% @tweets.each do |tweet| %>
+      <%= render(tweet) %>
+    <% end %>
+    <%= paginate(@tweets) %>
+  </div>
 </div>
 

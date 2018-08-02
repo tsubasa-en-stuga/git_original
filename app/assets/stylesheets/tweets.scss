@@ -8,15 +8,6 @@ $item_height: 30vh;
 
 
 //投稿機能に関して
-.form_btns {
-  .image_thumbnail {
-    background-color: $lightGray;
-    height: $item_height;
-
-    @include item_background_image_settings();
-  }
-}
-
 
 .tweet_forms {
   .form_items {

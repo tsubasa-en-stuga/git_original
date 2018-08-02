@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   has_many :tweets
   has_many :comments               #commentsテーブルとのアソシエーション
   has_many :images                 #imagesテーブルとのアソシエーション
+
+  def newer_images
+	self.images.order("created_at DESC")
+  end
 end

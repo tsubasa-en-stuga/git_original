@@ -1,5 +1,4 @@
-$
-$(document).ready(function() { 
+$(function() { 
 	hilight_checked_item(), 
 	render_form_items()
 });
@@ -14,10 +13,10 @@ function hilight_checked_item(){
     var form_type = $(this).closest(".form_items").attr("id").replace("_items","")
     if(form_type == "image"){
       var image_path = $(this).css("background-image")
-      $("#image").css({
+      $("#image_btn").css({
         "background-image": image_path
       });
-      $("#image").children("h3").text("");
+      $("#image_btn h3").text("");
 
   	}
   	else {

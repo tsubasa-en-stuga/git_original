@@ -8,6 +8,7 @@ class ParentsController < ApplicationController
 
   def create
     image = current_user.images.create(image_params)
+    redirect_to parent_path
   end
   
   private
