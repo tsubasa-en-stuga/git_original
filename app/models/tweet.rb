@@ -1,7 +1,7 @@
 class Tweet < ActiveRecord::Base
   belongs_to :user
   has_many :phrases, through: :tweet_phrases
-  has_many :tweet_phrases
+  has_many :tweet_phrases, dependent: :destroy
   has_many :comments           #commentsテーブルとのアソシエーション
   has_one :image
 
