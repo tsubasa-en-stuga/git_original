@@ -5,7 +5,7 @@ class Tweet < ActiveRecord::Base
   has_many :comments           #commentsテーブルとのアソシエーション
   has_one :image
 
-  accepts_nested_attributes_for :tweet_phrases
+  accepts_nested_attributes_for :tweet_phrases, allow_destroy: true
 
   def created_at
     self['created_at'].to_s(:date)
@@ -20,5 +20,9 @@ class Tweet < ActiveRecord::Base
 
   def second_sentence
   	self.phrases.impression.first.text
+  end
+
+  def phrase_type_and_text
+    self.phrases.map{|p| [p.phrase_type,p.text]}.to_h
   end
 end
