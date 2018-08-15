@@ -45,7 +45,7 @@ class TweetsController < ApplicationController
   end
 
   def update_tweet_params
-    params.require(:tweet).permit(:image, tweet_phrases_attributes: [:phrase_id, :_destroy, :id])
+    params.require(:tweet).permit(tweet_phrases_attributes: [:phrase_id, :_destroy, :id])
   end
 
   def image_params
