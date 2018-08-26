@@ -4,6 +4,7 @@ class Tweet < ActiveRecord::Base
   has_many :tweet_phrases
   has_many :comments           #commentsテーブルとのアソシエーション
   has_one :image
+  has_many :likes, dependent: :destroy
 
   accepts_nested_attributes_for :tweet_phrases
 
@@ -20,5 +21,9 @@ class Tweet < ActiveRecord::Base
 
   def second_sentence
   	self.phrases.impression.first.text
+  end
+  
+  def like_user(user_id)
+    self.likes.find_by(user_id: user_id)
   end
 end

@@ -2,6 +2,7 @@
   <h3>みんなの絵にっき</h3>
   <% @tweets.each do |tweet| %>
     <%= render(tweet) %>
+    <%= render partial: 'likes/like', locals: { tweet: tweet, likes: @likes} %>
   <% end %>
   <%= paginate(@tweets) %>
 </div>
