@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'parents#index'
   resources :tweets do
     resources :comments, only: [:create]
-    resources :likes, only: [:create, :destroy]
+    resource :likes, only: [:create, :destroy]
   end
   resources :users, only: [:show]
   resources :parents, only: [:show]
