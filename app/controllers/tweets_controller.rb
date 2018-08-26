@@ -17,7 +17,7 @@ class TweetsController < ApplicationController
 
   def create
     tweet = current_user.tweets.create(tweet_params)
-    current_user.images.find(image_params[:image_id]).update(tweet_id: tweet.id)
+    current_user.images.find(image_params[:image_id]).update(tweet_id: tweet.id) if image_params[:image_id]
   end
 
   def destroy
@@ -31,7 +31,10 @@ class TweetsController < ApplicationController
 
   def update
     if @tweet.user_id == current_user.id
-      @tweet.update(update_tweet_params)
+      @tweet.tweet_phrases.each do |phrase|
+        phrase.destroy
+      end
+      @tweet.update(tweet_params)
     end
   end
   
@@ -42,10 +45,6 @@ class TweetsController < ApplicationController
   private
   def tweet_params
     params.require(:tweet).permit(:image, tweet_phrases_attributes: [:phrase_id])
-  end
-
-  def update_tweet_params
-    params.require(:tweet).permit(tweet_phrases_attributes: [:phrase_id, :_destroy, :id])
   end
 
   def image_params

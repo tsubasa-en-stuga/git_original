@@ -1,6 +1,6 @@
 <div class="contents row">
   <h3>絵にっきを 書きなおす</h3>
-  <%= render partial: "tweet_form", locals: {
+  <%= render partial: "tweet_form_edit", locals: {
   	tweet: @tweet,
   	phrases: @tweet.phrase_type_and_text,
   	time: @tweet.created_at
