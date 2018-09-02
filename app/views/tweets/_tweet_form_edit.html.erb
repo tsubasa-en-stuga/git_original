@@ -39,8 +39,8 @@
       <%= fields_for :image do |image| %>
         <% if current_user.newer_images.present? %>
           <% current_user.newer_images.each do |img| %>
-            <%= label_tag :image_id, "",for: "image_id_#{img.id}", class: "form_item image col-md-4 col-sm-6 col-xs-6 thumbnail", style: "background-image:url(#{img.image.url})" do %>
-              <%= radio_button_tag :image_id, img.id , nil, class: "phrase_input"%>
+            <%= f.label :image_id, "",for: "tweet_image_id_#{img.id}", class: "form_item image col-md-4 col-sm-6 col-xs-6 thumbnail", style: "background-image:url(#{img.image.url})" do %>
+              <%= f.radio_button :image_id, img.id, class: "phrase_input"%>
             <% end %>
           <% end %>
         <% else %>

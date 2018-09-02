@@ -17,7 +17,6 @@ class TweetsController < ApplicationController
 
   def create
     tweet = current_user.tweets.create(tweet_params)
-    current_user.images.find(image_params[:image_id]).update(tweet_id: tweet.id) if image_params[:image_id]
   end
 
   def destroy
@@ -44,11 +43,7 @@ class TweetsController < ApplicationController
 
   private
   def tweet_params
-    params.require(:tweet).permit(:image, tweet_phrases_attributes: [:phrase_id])
-  end
-
-  def image_params
-    params.permit(:image_id)
+    params.require(:tweet).permit(:image_id, tweet_phrases_attributes: [:phrase_id])
   end
 
   def move_to_index
