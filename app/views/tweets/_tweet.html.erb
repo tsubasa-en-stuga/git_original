@@ -27,3 +27,4 @@
   <%= content_tag :div, nil, class: "content_image", style:("background-image: url( #{tweet.image.image});" if tweet.image)%>
 </div>
   
+<%= render partial: 'likes/like', locals: { tweet: tweet, likes: @likes} %>
