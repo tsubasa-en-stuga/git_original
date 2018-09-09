@@ -1,4 +1,4 @@
 <div class="contents row" >
   <%= render @tweet %>
-  <%= render partial: "tweet_comment", locals: {comment: @comments}%>
+  <%= render partial: "tweet_comment", locals: {tweet: @tweet, comments: @comments}%>
 </div>
