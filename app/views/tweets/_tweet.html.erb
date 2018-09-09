@@ -7,7 +7,6 @@
   <div class="more">
     <span><%= image_tag 'arrow_top.png' %></span>
     <ul class="more_list">
-      <li><%= link_to '詳細', "/tweets/#{tweet.id}", method: :get %></li>
       <% if user_signed_in? && current_user.id == tweet.user_id %>
         <li><%= link_to '編集', "/tweets/#{tweet.id}/edit", method: :get %></li>
         <li><%= link_to '削除', "/tweets/#{tweet.id}", method: :delete %></li>
@@ -26,4 +25,10 @@
   </div>
   <%= content_tag :div, nil, class: "content_image", style:("background-image: url( #{tweet.image.image});" if tweet.image)%>
 </div>
-  
+<div class= "reactions">
+    <%= render partial: 'likes/like', locals: { tweet: tweet, likes: @likes} %>
+    <%= button_to tweet_path(tweet), class: "comment_icon", method: :get do %>
+      <%= fa_icon "comments", class: "fa-3x" %>
+      <span><%= tweet.comments_count %></span>
+    <% end %>
+</div>    

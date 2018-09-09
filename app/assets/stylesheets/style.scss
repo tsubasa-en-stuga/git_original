@@ -446,3 +446,26 @@ footer {
     }
   }
 }
+
+.reactions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  
+  .comment_icon {
+    position: relative;
+    border: none;
+    background-color: transparent;
+  }
+  .like_button {
+    border: none;
+    background-color: transparent;
+
+    .like_image {
+      position: relative;
+      height: auto;
+      width: 48px;
+      vertical-align: -30%;
+    }
+  }
+}
