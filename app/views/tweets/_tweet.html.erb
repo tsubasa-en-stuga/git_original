@@ -25,10 +25,10 @@
   </div>
   <%= content_tag :div, nil, class: "content_image", style:("background-image: url( #{tweet.image.image});" if tweet.image)%>
 </div>
-<div>
+<div class= "reactions">
     <%= render partial: 'likes/like', locals: { tweet: tweet, likes: @likes} %>
-    <%= button_to tweet_path(tweet), method: :get do %>
-      <%= fa_icon "comments" %>
-    <% end %>>
-    <span>お友だちからのコメント： <%= tweet.comments_count %></span>
+    <%= button_to tweet_path(tweet), class: "comment_icon", method: :get do %>
+      <%= fa_icon "comments", class: "fa-3x" %>
+      <span><%= tweet.comments_count %></span>
+    <% end %>
 </div>    
