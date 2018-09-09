@@ -1,8 +1,6 @@
 <div class="contents row">
   <h2>Log in</h2>
-
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true %>
@@ -15,16 +13,14 @@
 
     <% if devise_mapping.rememberable? -%>
       <div class="field">
-        <%= f.label :remember_me %><br />
+        <%= f.label :remember_me %>
         <%= f.check_box :remember_me %>
       </div>
     <% end -%>
 
     <div class="actions">
-      <%= f.submit "Log in" %>
+      <%= f.submit t(".sign_in") %>
     </div>
-    <%= link_to new_user_registration_path do %>
-      <h3>SIGN UP</h3>
-    <% end %>
+    <%= link_to t(".sign_up"), new_user_registration_path %>
   <% end %>
 </div>

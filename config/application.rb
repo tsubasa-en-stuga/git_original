@@ -17,5 +17,7 @@ module Original
     config.active_record.raise_in_transactional_callbacks = true
     config.time_zone = 'Tokyo'
     config.assets.initialize_on_precompile = false
+
+    config.i18n.default_locale = :ja
   end
 end
