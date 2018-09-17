@@ -31,6 +31,7 @@ gem 'sprockets', '2.11.0'
 gem 'kaminari'
 gem 'devise'
 gem 'carrierwave'
+gem 'mini_magick','~>3.7.0'
 gem "font-awesome-rails"
 
 # Use ActiveModel has_secure_password
