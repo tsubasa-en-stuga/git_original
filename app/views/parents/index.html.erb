@@ -1,15 +1,22 @@
-<div class="contents row">
-  <div class="welcome_content">
-    <%= image_tag("oekaki.png", class: "welcome_image") %>  
-    <% if user_signed_in? %>
-      <div class="welcome_btn">
-        <%= link_to "絵にっきをかく", new_tweet_path(current_user), class: 'welcome_btn_item' %>
-        <%= link_to "みんなの絵にっきを見る", tweets_path(current_user), class: 'welcome_btn_item' %>
-        <%= link_to "#{current_user.nickname}の絵にっきを見る", user_path(current_user), class: 'welcome_btn_item' %>
-      </div>
-    <% else %>
-      <%= link_to "ログイン", new_user_session_path, class: 'post', class: 'btn'%>
-      <%= link_to "新規登録", new_user_registration_path, class: 'post', class: 'btn'%>
-    <% end %>
+<div class="container">
+  <div class="m-3 p-1">
+    <h1 class="text-center font-weight-bold">なつの絵にっき</h1>
+    <%= image_tag "oekaki.png", class: "center-block w-25" %>
   </div>
+  <% if user_signed_in? %>
+    <div class="d-flex flex-column flex-md-row">
+      <%= link_to new_tweet_path(current_user), class: 'btn btn-primary btn-block mt-2 mx-4' do %>
+        <h4 class="text-center">絵にっきをかく</h4>
+      <% end %>
+      <%= link_to tweets_path(current_user), class: 'btn btn-primary btn-block mx-4' do %>
+        <h4 class="text-center">みんなの絵にっきを見る</h4>
+      <% end %>
+      <%= link_to user_path(current_user), class: 'btn btn-primary btn-block mx-4' do%>
+        <h4 class="text-center"><%= "#{current_user.nickname}の絵にっきを見る" %></h4>
+      <% end %>
+    </div>
+  <% else %>
+    <%= link_to "ログイン", new_user_session_path, method: 'post', class: 'btn'%>
+    <%= link_to "新規登録", new_user_registration_path, method: 'post', class: 'btn'%>
+  <% end %>
 </div>
