@@ -1,28 +1,17 @@
-$item_height: 30vh;
-
-@mixin item_background_image_settings() {
-  background-position: center center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-
 //投稿機能に関して
 
 .tweet_forms {
   .form_items {
     .form_item {
-      background-color: $lightGray;
-      height: $item_height;
-      margin: 1vh;
-
-      +.image{
-        @include item_background_image_settings();
-      }
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 200px;
 
       label {
         font-weight: normal;
       }
+
       display: inline;
       &:hover {
         border-color: lighten($accent, 15%);
@@ -47,7 +36,6 @@ $item_height: 30vh;
   overflow: auto;
   .image_item {
     background-color: $lightGray;
-    height: $item_height;
     margin: 1vh;
     @include item_background_image_settings();
   }
