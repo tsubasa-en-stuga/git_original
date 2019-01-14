@@ -144,11 +144,13 @@ div.contents.row {
   .content_image {
     position: relative;
     height: auto;
-    width: 350px;
+    width: 430px;
     border-radius: $baseRadius;
     border: $white solid;
     background-color: $lightGray;
-    @include item_background_image_settings();
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
