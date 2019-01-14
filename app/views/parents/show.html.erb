@@ -1,32 +1,32 @@
-<div class="contents row parents">
-  <h3>保護者用ページ</h3>
-  <div class="success">
-    <a class="btn" href="/">お子様用トップページへ</a>
-    <% if user_signed_in? %>
-      <a class="btn" href="/users/edit">アカウント情報編集</a>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn' %>
-    <% else %>
-      <%= link_to "ログイン", new_user_session_path, class: 'post' %>
-      <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
-    <% end %>
-  </div>
-
-  <div class="success">
-    <h3>アバター画像</h3>
-    <%= image_tag(@user.avatar) %>
-  </div>
-  <div class="success">
-    <h3>お子様の絵の画像をアップロードしてください</h3>    
-    <%= form_for :image do |f| %>
-      <%= f.file_field :image %>
-      <%= f.submit %>
-    <% end %>
-    <h3>画像一覧</h3>
-    <div class="images">
-      <% current_user.newer_images.each do |img| %>
-        <%= content_tag :div, class: "image_item col-md-4 col-sm-6 col-xs-6", style: "background-image:url(#{img.image.url})" do %>
+<div class="container">
+  <div class="m-3 p-1">
+    <h1 class="text-center font-weight-bold">保護者用ページ</h1>
+    <div class="success">
+      <h3 class="text-center">アカウント関連</h3>
+      <div class="d-flex flex-column flex-md-row">
+        <%= link_to edit_user_registration_path(@user), class: 'btn btn-primary btn-block mt-2 mx-4' do %>
+          <h4>アカウント編集</h4>
         <% end %>
+        <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-block mt-2 mx-4' do %>
+          <h4>ログアウト</h4>
+        <% end %>
+      </div>
+    </div>
+    <div class="success">
+      <h3 class="text-center">絵にっき画像追加</h3>
+      <%= form_for :image do |f| %>
+        <div class="form-inline p-2 text-center">
+          <%= f.file_field :image, class: "btn btn-outline-light col border border-dark" %>
+          <%= f.submit "送信", class: "btn btn-primary" %>
+        </div>
       <% end %>
-    </div>  
+      <div class="m-2 p-2">
+        <h3 class="text-center">絵にっき画像一覧</h3>
+        <% @user.newer_images.each do |img| %>
+          <%= content_tag :div, nil,class: "prepared_image col-sm-3 thumbnail", style: "background-image:url(#{img.image.url})" do %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

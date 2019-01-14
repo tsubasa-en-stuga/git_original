@@ -1,42 +1,38 @@
 //投稿機能に関して
 
-.tweet_forms {
-  .form_items {
-    .form_item {
-      background-position: center center;
-      background-size: contain;
-      background-repeat: no-repeat;
-      height: 200px;
+.form_items {
+  .form_item {
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 200px;
 
-      label {
-        font-weight: normal;
-      }
-
-      display: inline;
-      &:hover {
-        border-color: lighten($accent, 15%);
-        color: lighten($accent, 15%);
-      }
-      .phrase_input {
-        display: none;
-      }
-
-      &.checked {
-        font-weight: bold;
-      }
+    label {
+      font-weight: normal;
     }
-    &:not(#image_items) {
+
+    display: inline;
+    &:hover {
+      border-color: lighten($accent, 15%);
+      color: lighten($accent, 15%);
+    }
+    .phrase_input {
       display: none;
     }
+
+    &.checked {
+      font-weight: bold;
+    }
+  }
+  &:not(#image_items) {
+    display: none;
   }
 }
 
-//親用ページに関して
-.parents {
-  overflow: auto;
-  .image_item {
-    background-color: $lightGray;
-    margin: 1vh;
-    @include item_background_image_settings();
-  }
+//保護者ページに関して
+.prepared_image {
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 200px;
 }
