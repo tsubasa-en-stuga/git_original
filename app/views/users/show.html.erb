@@ -1,5 +1,5 @@
-<div class="contents row">
-  <p><%= @nickname %>さんの　いままでの絵にっき</p>
+<div class="container">
+  <h1 class="text-center font-weight-bold"><%= @nickname %>の絵にっき</h1>
   <div>
     <% @tweets.each do |tweet| %>
       <%= render(tweet) %>
