@@ -1,34 +1,35 @@
-<% tweet_phrases = tweet.tweet_phrases %>
-
-<div class="tweet_content">
-  <div class= "user_avatar" style="background-image: url(<%= tweet.user.avatar %>);">
-    <span class= "user_name"><%= tweet.user.nickname %></span>
-  </div>
-  <div class="more">
-    <span><%= image_tag 'arrow_top.png' %></span>
-    <ul class="more_list">
-      <% if user_signed_in? && current_user.id == tweet.user_id %>
-        <li><%= link_to '編集', "/tweets/#{tweet.id}/edit", method: :get %></li>
-        <li><%= link_to '削除', "/tweets/#{tweet.id}", method: :delete %></li>
+<div class="container">
+  <div class="tweet_content">
+    <div class= "user_avatar rounded-circle" style="background-image: url(<%= tweet.user.avatar %>);">
+      <span class= "user_name"><%= tweet.user.nickname %></span>
+    </div>
+    <div class="more">
+      <span><%= image_tag 'arrow_top.png' %></span>
+      <ul class="more_list">
+        <% if user_signed_in? && current_user.id == tweet.user_id %>
+          <li><%= link_to '編集', "/tweets/#{tweet.id}/edit", method: :get %></li>
+          <li><%= link_to '削除', "/tweets/#{tweet.id}", method: :delete %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="content_text">
+      <div class="text_date">
+        <%= content_tag :h3, tweet.created_at%>
+      </div>
+      <div class="text_body text-center py-3">
+        <% tweet.phrase_type_and_text.each do |phrase_type, text| %>
+          <%= content_tag :div, text, class: "form_type_btn #{phrase_type} rounded", id: "#{phrase_type}_btn"%>
+        <% end %>
+      </div>
+      <div class="content_text__polygon"></div>
+    </div>
+    <%= content_tag :div, nil, class: "content_image", style:("background-image: url( #{tweet.image.image});" if tweet.image)%>
+    <div class= "reactions">
+      <%= render partial: 'likes/like', locals: { tweet: tweet, likes: @likes} %>
+      <%= button_to tweet_path(tweet), class: "comment_icon", method: :get do %>
+        <%= fa_icon "comments", class: "fa-3x" %>
+        <span><%= tweet.comments_count %></span>
       <% end %>
-    </ul>
   </div>
-  <div class="content_text">
-    <div class="text_date">
-      <span><%= tweet.created_at %></span>
-    </div>
-    <div class="text_body">
-      <div class= "first"><%= tweet.first_sentence %>。</div>
-      <div class= "second"><%= tweet.second_sentence %>。</div>
-    </div>
-    <div class="content_text__polygon"></div>
   </div>
-  <%= content_tag :div, nil, class: "content_image", style:("background-image: url( #{tweet.image.image});" if tweet.image)%>
 </div>
-<div class= "reactions">
-    <%= render partial: 'likes/like', locals: { tweet: tweet, likes: @likes} %>
-    <%= button_to tweet_path(tweet), class: "comment_icon", method: :get do %>
-      <%= fa_icon "comments", class: "fa-3x" %>
-      <span><%= tweet.comments_count %></span>
-    <% end %>
-</div>    
