@@ -5,10 +5,10 @@
   </div>
   <% if user_signed_in? %>
     <div class="d-flex flex-column align-items-center flex-sm-row justify-content-around">
-      <%= link_to new_tweet_path(current_user), class: 'btn btn-primary mx-4 d-inline-block main_btn my-2' do %>
+      <%= link_to new_tweet_path, class: 'btn btn-primary mx-4 d-inline-block main_btn my-2' do %>
         <h4 class="text-center">絵にっきをかく</h4>
       <% end %>
-      <%= link_to tweets_path(current_user), class: 'btn btn-primary mx-4 d-inline-block main_btn my-2' do %>
+      <%= link_to tweets_path, class: 'btn btn-primary mx-4 d-inline-block main_btn my-2' do %>
         <h4 class="text-center">みんなの絵にっきを見る</h4>
       <% end %>
       <%= link_to user_path(current_user), class: 'btn btn-primary mx-4 d-inline-block main_btn my-2' do%>
