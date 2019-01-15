@@ -1,35 +1,38 @@
-<div class="container">
-  <div class="tweet_content">
-    <div class= "user_avatar rounded-circle" style="background-image: url(<%= tweet.user.avatar %>);">
-      <span class= "user_name"><%= tweet.user.nickname %></span>
+<div class="tweet mb-3 pt-5 pb-3 border-bottom">
+  <div class="tweet_content d-flex justify-content-center">
+    <div class="contents_body">
+      <div class= "user_avatar rounded-circle" style="background-image: url(<%= tweet.user.avatar %>);">
+        <span class= "user_name"><%= tweet.user.nickname %></span>
+      </div>
+      <div class="content_text">
+        <div class="text_date">
+          <%= content_tag :h3, tweet.created_at%>
+        </div>
+        <div class="text_body d-flex flex-column justify-content-center text-center">
+          <% tweet.phrase_type_and_text.each do |phrase_type, text| %>
+            <%= content_tag :div, text, class: "form_type_btn #{phrase_type} rounded", id: "#{phrase_type}_btn"%>
+          <% end %>
+          <div class="content_text__polygon"></div>
+        </div>
+      </div>
     </div>
-    <div class="content_text">
-      <div class="text_date">
-        <%= content_tag :h3, tweet.created_at%>
-      </div>
-      <div class="text_body text-center py-3">
-        <% tweet.phrase_type_and_text.each do |phrase_type, text| %>
-          <%= content_tag :div, text, class: "form_type_btn #{phrase_type} rounded", id: "#{phrase_type}_btn"%>
-        <% end %>
-      </div>
-      <div class="content_text__polygon"></div>
-    </div>
-    <%= content_tag :div, nil,class: "content_image", style:("background-image: url( #{tweet.image.image});" if tweet.image)%>
-    <% if user_signed_in? && current_user.id == tweet.user_id %>
-      <div class="more">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-        <ul class="dropdown-menu">
-          <li class="dropdown-menu-item"><%= link_to '編集', "/tweets/#{tweet.id}/edit", method: :get %></li>
-          <li class="dropdown-menu-item"><%= link_to '削除', "/tweets/#{tweet.id}", method: :delete %></li>
-        </ul>
-      </div>
-    <% end %>
-    <div class= "reactions">
-      <%= render partial: 'likes/like', locals: { tweet: tweet, likes: @likes} %>
-      <%= button_to tweet_path(tweet), class: "comment_icon", method: :get do %>
-        <%= fa_icon "comments", class: "fa-3x" %>
-        <span><%= tweet.comments_count %></span>
+    <%= content_tag :div, class: "content_image p-3", style:("background-image: url( #{tweet.image.image});" if tweet.image) do%>
+      <% if user_signed_in? && current_user.id == tweet.user_id %>
+        <div class="more float-right">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-menu-item"><%= link_to '編集', "/tweets/#{tweet.id}/edit", method: :get %></li>
+            <li class="dropdown-menu-item"><%= link_to '削除', "/tweets/#{tweet.id}", method: :delete %></li>
+          </ul>
+        </div>
       <% end %>
-    </div>
+    <% end %>
+  </div>
+  <div class= "tweet_reactions d-flex justify-content-start">
+    <%= render partial: 'likes/like', locals: { tweet: tweet, likes: @likes} %>
+    <%= button_to tweet_path(tweet), class: "comment_icon", method: :get do %>
+      <%= fa_icon "comments", class: "fa-3x" %>
+      <span><%= tweet.comments_count %></span>
+    <% end %>
   </div>
 </div>
