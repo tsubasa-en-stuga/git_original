@@ -3,5 +3,5 @@
   <% @tweets.each do |tweet| %>
     <%= render(tweet) %>
   <% end %>
-  <%= paginate(@tweets) %>
+  <div class="text-center"><%= paginate(@tweets) %></div>
 </div>
