@@ -3,11 +3,11 @@
     <h1 class="text-center font-weight-bold">保護者用ページ</h1>
     <div class="success">
       <h3 class="text-center">アカウント関連</h3>
-      <div class="d-flex flex-column flex-md-row">
-        <%= link_to edit_user_registration_path(@user), class: 'btn btn-primary btn-block mt-2 mx-4' do %>
+      <div class="d-flex flex-column align-items-center flex-sm-row justify-content-around">
+        <%= link_to edit_user_registration_path(@user), class: 'btn btn-primary btn-block mt-2 mx-1 d-inline-block main_btn' do %>
           <h4>アカウント編集</h4>
         <% end %>
-        <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-block mt-2 mx-4' do %>
+        <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-block mt-2 mx-1 d-inline-block main_btn' do %>
           <h4>ログアウト</h4>
         <% end %>
       </div>
