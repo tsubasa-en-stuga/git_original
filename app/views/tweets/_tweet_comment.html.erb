@@ -1,10 +1,12 @@
 <% if current_user %>
   <%= form_tag tweet_comments_path(tweet), method: :post do %>
-    <textarea name="text" placeholder="コメントする" rows="2" cols="30"></textarea>
-    <input type="submit" value="コメントをおくる">
+    <div class="form-group p-3">
+      <textarea name="text" placeholder="コメントする" class="form-control w-50"></textarea>
+      <input type="submit" value="コメントをおくる" class="btn btn-primary my-2">
+    </div>
   <% end %>
 <% end %>
-<div class="comments">   
+<div class="comments">
   <h4>＜みんなのコメント＞</h4>
   <% if comments %>
     <% comments.each do |comment| %>
