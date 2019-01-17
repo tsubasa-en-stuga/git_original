@@ -1,5 +1,5 @@
-$(function() { 
-	hilight_checked_item(), 
+$(function() {
+	hilight_checked_item(),
 	render_form_items()
 });
 
@@ -17,7 +17,6 @@ function hilight_checked_item(){
         "background-image": image_path
       });
       $("#image_btn h3").text("");
-
   	}
   	else {
   	  var checked_phrase = $(this).text();
@@ -30,9 +29,9 @@ function hilight_checked_item(){
 
 function render_form_items(){
   $(".form_type_btn").on("click", (function(){
-       var form_type = $(this).attr("id").replace("_btn","");
-       $(".form_items").hide();
-       $("#" + form_type +"_items").show();
+      var form_type = $(this).attr("id").replace("_btn","");
+      $(".form_items").hide();
+      $("#" + form_type +"_items").show();
   }))
 }
 //aタグをクリックすると、タグに応じた文章の選択項目を表示するため
