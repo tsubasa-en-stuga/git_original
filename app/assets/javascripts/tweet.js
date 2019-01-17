@@ -31,7 +31,7 @@ function render_form_items(){
   $(".form_type_btn").on("click", (function(){
       var form_type = $(this).attr("id").replace("_btn","");
       $(".form_items").hide();
-      $("#" + form_type +"_items").show();
+      $("#" + form_type +"_items").css('display', 'flex');
   }))
 }
 //aタグをクリックすると、タグに応じた文章の選択項目を表示するため

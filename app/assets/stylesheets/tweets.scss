@@ -9,17 +9,22 @@
 
 //投稿機能に関して
 .form_items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+
   .form_item {
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
-    height: 200px;
 
+    width: $content_width/2;
+    height: $content_height/2;
     label {
       font-weight: normal;
     }
-
-    display: inline;
     &:hover {
       border-color: lighten($accent, 15%);
       color: lighten($accent, 15%);
@@ -43,4 +48,13 @@
   background-size: contain;
   background-repeat: no-repeat;
   height: 200px;
+}
+
+//comment機能に関して
+.comments {
+  textarea {
+    resize: none;
+    width: $content_width;
+    height: auto;
+  }
 }

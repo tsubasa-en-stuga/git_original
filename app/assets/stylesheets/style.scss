@@ -175,6 +175,9 @@ div.contents.row {
       text-decoration: underline;
     }
   }
+  p {
+    word-wrap: break-word;
+  }
 }
 
 .tweet_reactions {

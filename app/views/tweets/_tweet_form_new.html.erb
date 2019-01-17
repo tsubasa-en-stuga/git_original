@@ -29,7 +29,7 @@
         <%= f.fields_for :tweet_phrases, @tweet.tweet_phrases, include_id: false do |tweet_phrase| %>
           <div class="form_items <%= phrase_type %>" id= "<%= phrase_type %>_items">
             <% @phrases.where(phrase_type: phrase_type_id).each do |item| %>
-              <%= tweet_phrase.label "phrase_id_#{item.id}", class: "form_item col-sm-3 thumbnail", style: "background-image: url(#{item.image});" do %>
+              <%= tweet_phrase.label "phrase_id_#{item.id}", class: "form_item thumbnail m-2", style: "background-image: url(#{item.image});" do %>
                 <%= tweet_phrase.radio_button :phrase_id, item.id, class: "phrase_input"%>
                 <%= content_tag :p, item.text %>
               <% end %>
@@ -41,7 +41,7 @@
         <%= fields_for :image do |image| %>
           <% if current_user.newer_images.present? %>
             <% current_user.newer_images.each do |img| %>
-              <%= f.label :image_id, "",for: "tweet_image_id_#{img.id}", class: "form_item image col-sm-3 thumbnail", style: "background-image:url(#{img.image.url})" do %>
+              <%= f.label :image_id, "",for: "tweet_image_id_#{img.id}", class: "form_item image thumbnail m-2", style: "background-image:url(#{img.image.url})" do %>
                 <%= f.radio_button :image_id, img.id, class: "phrase_input"%>
               <% end %>
             <% end %>
@@ -50,7 +50,7 @@
           <% end %>
         <% end %>
       </div>
-      <%= f.submit value: "お友だちにみせよう", class: "btn btn-primary btn-lg btn-block" %>
+      <%= f.submit value: "お友だちにみせよう", class: "btn btn-primary btn-lg btn-block btn_submit" %>
     <% end %>
   </div>
 </div>
