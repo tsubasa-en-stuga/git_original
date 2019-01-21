@@ -1,54 +1,60 @@
-$item_height: 30vh;
-
-@mixin item_background_image_settings() {
-  background-position: center center;
-  background-size: contain;
-  background-repeat: no-repeat;
+//parenets/index.html.erb
+.main_img {
+  width: 300px;
 }
 
+.main_btn {
+  width: 250px;
+}
 
 //投稿機能に関して
+.form_items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 
-.tweet_forms {
-  .form_items {
-    .form_item {
-      background-color: $lightGray;
-      height: $item_height;
-      margin: 1vh;
 
-      +.image{
-        @include item_background_image_settings();
-      }
+  .form_item {
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
 
-      label {
-        font-weight: normal;
-      }
-      display: inline;
-      &:hover {
-        border-color: lighten($accent, 15%);
-        color: lighten($accent, 15%);
-      }
-      .phrase_input {
-        display: none;
-      }
-
-      &.checked {
-        font-weight: bold;
-      }
+    width: $content_width/2;
+    height: $content_height/2;
+    label {
+      font-weight: normal;
     }
-    &:not(#image_items) {
+    &:hover {
+      border-color: lighten($accent, 15%);
+      color: lighten($accent, 15%);
+    }
+    .phrase_input {
       display: none;
     }
+
+    &.checked {
+      font-weight: bold;
+    }
+  }
+  &:not(#image_items) {
+    display: none;
   }
 }
 
-//親用ページに関して
-.parents {
-  overflow: auto;
-  .image_item {
-    background-color: $lightGray;
-    height: $item_height;
-    margin: 1vh;
-    @include item_background_image_settings();
+//保護者ページに関して
+.prepared_image {
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 200px;
+}
+
+//comment機能に関して
+.comments {
+  textarea {
+    resize: none;
+    width: $content_width;
+    height: auto;
   }
 }

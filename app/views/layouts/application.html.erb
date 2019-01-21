@@ -2,51 +2,54 @@
 <html>
   <head>
     <title>なつの絵にっき</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    <script type="text/javascript">
-      WebFontConfig = {
-        google: { families: [ 'Unica+One::latin' ] }
-      };
-      (function() {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-      })();
-    </script>
   </head>
 
   <body>
-
-    <header class="header">
-      <div class="header__bar row">
-        <h1 class="grid-6">
-          <%= link_to root_path do %>
-            <%= image_tag("logo.png", class: "header_logo")  %>
-          <% end %>
-        </h1>
-        <div class="user_nav grid-6">
-          <% if user_signed_in? %>
-            <span id="header_user"><%= current_user.nickname %>
-              <ul class="user__info">
-                <li>
-                  <%= link_to "絵にっきをかく", new_tweet_path(current_user) %>
-                  <%= link_to "みんなの絵にっきを見る", tweets_path(current_user) %>
-                  <%= link_to "#{current_user.nickname}の絵にっきを見る", user_path(current_user) %>
-                  <%= link_to "保護者用ページへ", parent_path(current_user), id: "parent_btn" %>
-                </li>
-              </ul>
-            </span>
-          <% end %>
-        </div>
-      </div>
+    <header>
+      <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <%= link_to root_path, class: "navbar-name font-weight-bold" do %>なつの絵にっき
+        <% end %>
+        <% if user_signed_in? %>
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div id="menu" class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <%= link_to "絵にっきをかく", new_tweet_path, class: " nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "みんなの絵にっきを見る", tweets_path, class: " nav-link"  %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "#{current_user.nickname}の絵にっきを見る", user_path(current_user) , class: " nav-link" %>
+              </li>
+              <li class="nav-item" id="parent_btn">
+                <%= link_to "保護者用ページへ", parent_path(current_user), class: " nav-link" %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+      </nav>
     </header>
     <%= yield %>
-    <footer><p>Copyright 2018 Team Enikki All Rights Reserved.</p></footer>
+    <footer class="text-center text-muted py-3 my-3 bg-light"><p>Copyright 2018 Team Enikki All Rights Reserved.</p></footer>
   </body>
 </html>

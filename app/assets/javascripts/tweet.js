@@ -1,8 +1,7 @@
-$(function() { 
-	hilight_checked_item(), 
-	render_form_items()
-});
-
+$(document).on('turbolinks:load', function() {
+  hilight_checked_item(),
+  render_form_items()
+})
 //投稿フォーム用javascript
 
 function hilight_checked_item(){
@@ -17,11 +16,11 @@ function hilight_checked_item(){
         "background-image": image_path
       });
       $("#image_btn h3").text("");
-
   	}
   	else {
   	  var checked_phrase = $(this).text();
   	  $("#"+ form_type + "_btn").text(checked_phrase);
+      $("#"+ form_type + "_btn").css('color', 'black');
   	}
   }))
 }
@@ -30,9 +29,9 @@ function hilight_checked_item(){
 
 function render_form_items(){
   $(".form_type_btn").on("click", (function(){
-       var form_type = $(this).attr("id").replace("_btn","");
-       $(".form_items").hide();
-       $("#" + form_type +"_items").show();
+      var form_type = $(this).attr("id").replace("_btn","");
+      $(".form_items").hide();
+      $("#" + form_type +"_items").css('display', 'flex');
   }))
 }
 //aタグをクリックすると、タグに応じた文章の選択項目を表示するため
