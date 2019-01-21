@@ -1,8 +1,7 @@
-$(function() {
-	hilight_checked_item(),
-	render_form_items()
-});
-
+$(document).on('turbolinks:load', function() {
+  hilight_checked_item(),
+  render_form_items()
+})
 //投稿フォーム用javascript
 
 function hilight_checked_item(){
