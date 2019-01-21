@@ -20,6 +20,7 @@ function hilight_checked_item(){
   	else {
   	  var checked_phrase = $(this).text();
   	  $("#"+ form_type + "_btn").text(checked_phrase);
+      $("#"+ form_type + "_btn").css('color', 'black');
   	}
   }))
 }
