@@ -1,5 +1,8 @@
 <div class="container">
-  <div class="tweet mb-3 pt-5 pb-5 d-flex flex-column align-items-center">
+  <div class="alert alert-info my-3 text-center">
+    言葉や画像を選んで、絵にっきを完成させよう！
+  </div>
+  <div class="tweet mb-3 py-4 d-flex flex-column align-items-center">
     <div class="tweet_content d-flex flex-column align-items-center flex-sm-row">
       <div class="contents_body mx-3 my-2">
         <div class= "user_avatar rounded-circle" style="background-image: url(<%= current_user.avatar %>);">
@@ -50,7 +53,7 @@
           <% end %>
         <% end %>
       </div>
-      <%= f.submit value: "お友だちにみせよう", class: "btn btn-primary btn-lg btn-block btn_submit" %>
+      <%= f.submit value: "お友だちにみせよう", class: "btn btn-primary btn-lg btn-block btn_submit m-3" %>
     <% end %>
   </div>
 </div>
