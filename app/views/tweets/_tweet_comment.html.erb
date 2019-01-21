@@ -1,0 +1,19 @@
+<div class="comments d-flex flex-column align-items-center">
+  <% if current_user %>
+    <%= form_tag tweet_comments_path(tweet), method: :post do %>
+      <div class="p-3 d-flex flex-column align-items-center flex-md-row">
+        <textarea name="text" class="form-control" placeholder="コメントする"></textarea>
+        <input type="submit" value="コメントをおくる" class="btn btn-primary m-2">
+      </div>
+    <% end %>
+  <% end %>
+  <h4>＜みんなのコメント＞</h4>
+  <% if comments %>
+    <% comments.each do |comment| %>
+      <p class="w-100">
+        <strong><%= link_to comment.user.nickname, user_path(comment.user) %>：</strong>
+        <%= comment.text %>
+      </p>
+    <% end %>
+  <% end %>
+</div>

@@ -1,10 +1,8 @@
-<div class="contents row">
-  <%= form_tag("/tweets/#{@tweet.id}", method: :patch ) do %>
-    <h3>
-      にっきを　かきなおす
-    </h3>
-    <input type="text" name="image" value="<%= @tweet.image %>" placeholder="Image Url" autofocus="true">
-    <textarea name="text" placeholder="text" rows="10" cols="30"><%= @tweet.text %></textarea>
-    <input type="submit" value="SENT">
-  <% end %>
+<div class="container">
+  <h1 class="text-center font-weight-bold">絵にっきをかきなおす</h1>
+  <%= render partial: "tweet_form_edit", locals: {
+  	tweet: @tweet,
+  	phrases: @tweet.phrase_type_and_text,
+  	time: @tweet.created_at
+  }%>
 </div>

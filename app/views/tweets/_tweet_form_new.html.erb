@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="alert alert-info my-3 text-center">
+    言葉や画像をすべて選んで、絵にっきを完成させよう！
+  </div>
+  <div class="tweet mb-3 py-4 d-flex flex-column align-items-center">
+    <div class="tweet_content d-flex flex-column align-items-center flex-sm-row">
+      <div class="contents_body mx-3 my-2">
+        <div class= "user_avatar rounded-circle" style="background-image: url(<%= current_user.avatar %>);">
+          <span class= "user_name"> <%= current_user.nickname %></span>
+        </div>
+        <div class="content_text">
+          <div class="text_date h-25">
+            <%= content_tag :h4, time%>
+          </div>
+          <div class="text_body d-flex flex-column justify-content-center text-center text-secondary h-75 ml-3 post">
+            <% phrases.each do |phrase_type, text| %>
+              <%= content_tag :div, text, class: "form_type_btn #{phrase_type} rounded", id: "#{phrase_type}_btn"%>
+            <% end %>
+            <div class="content_text__polygon"></div>
+          </div>
+        </div>
+      </div>
+      <%= content_tag :div, class: "form_type_btn image content_image p-3 mx-3 my-2 d-flex align-items-center text-secondary", id: "image_btn", style: ("background-image: url(#{tweet.image.image});" if tweet.image) do%>
+        <div class="content_text__polygon"></div>
+        <%= content_tag :h3, "あたらしく かいた絵", class: "m-auto"  unless tweet.image%>
+      <% end %>
+    </div>
+  </div>
+  <div class= "tweet_forms">
+    <%= form_for(@tweet) do |f| %>
+      <% Phrase.phrase_types.each_pair do |phrase_type, phrase_type_id|%>
+        <%= f.fields_for :tweet_phrases, @tweet.tweet_phrases, include_id: false do |tweet_phrase| %>
+          <div class="form_items <%= phrase_type %>" id= "<%= phrase_type %>_items">
+            <% @phrases.where(phrase_type: phrase_type_id).each do |item| %>
+              <%= tweet_phrase.label "phrase_id_#{item.id}", class: "form_item thumbnail m-2", style: "background-image: url(#{item.image});" do %>
+                <%= tweet_phrase.radio_button :phrase_id, item.id, class: "phrase_input"%>
+                <%= content_tag :p, item.text %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="form_items image" id="image_items">
+        <%= fields_for :image do |image| %>
+          <% if current_user.newer_images.present? %>
+            <% current_user.newer_images.each do |img| %>
+              <%= f.label :image_id, "",for: "tweet_image_id_#{img.id}", class: "form_item image thumbnail m-2", style: "background-image:url(#{img.image.url})" do %>
+                <%= f.radio_button :image_id, img.id, class: "phrase_input"%>
+              <% end %>
+            <% end %>
+          <% else %>
+            <div class="alert alert-warning" role="alert">画像が登録されていません！</div>
+          <% end %>
+        <% end %>
+      </div>
+      <%= f.submit value: "お友だちにみせよう", class: "btn btn-primary btn-lg btn-block btn_submit m-3" %>
+    <% end %>
+  </div>
+</div>
