@@ -50,7 +50,10 @@
               <% end %>
             <% end %>
           <% else %>
-            <div class="alert alert-warning" role="alert">画像が登録されていません！</div>
+            <div class="alert alert-warning text-center" role="alert">
+              <span>画像を登録しよう！ <br></span>
+              <%= link_to "画像追加フォームはこちら",parent_path(current_user)%>
+            </div>
           <% end %>
         <% end %>
       </div>
